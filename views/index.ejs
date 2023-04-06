@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%=appkey%>&libraries=services"></script>
+    <title>물품보관함 위치</title>
+</head>
+<body>
+    <div class="header">
+        <a class="navbar" href="/"><img src="img/logo4.png" alt=""></a>
+        <div class="search">
+            <form onsubmit="searchPlaces(); return false">
+                <div id="search-bar">
+                    <input id="search-input" type="search" placeholder="위치를 검색하세요." value="">
+                    <button id="btn1" type="submit"><img src="img/001-search.png" alt="Search"></button>
+                </div>
+            </form>
+        </div>
+        
+        <input type="checkbox" id="hamburger">
+        <label for="hamburger">
+            <span></span>    
+            <span></span>    
+            <span></span>
+        </label>
+        <ul id="menu">
+            <li id="login">로그인</li>
+            <li id="register">회원가입</li>
+            <li id="add">추가하기</li>
+        </ul>
+    </div>
+    <div id="body">
+        <div class="map-container">
+            <div id="map"></div>
+            <button id="currentPos"><img src="img/target.png" alt=""></button>
+            <button id="test"><img src="img/010-shield.png" alt=""></button>
+            <script>
+                var _list =  "<%=JSON.stringify(list)%>";
+                _list = _list.replaceAll('&#34;','\"');
+                _list = JSON.parse(_list);
+            </script>
+        <script type="text/javascript" src="js/map.js"></script>
+        </div>
+        <div class="controller">
+            <ul id="ul1">
+                <li><a href="#home" id="home">주변보관함 정보</a></li>
+            </ul>
+            <ul id="placesList">
+            </ul>
+            <div id="pagination"></div> 
+        </div>
+    </div>
+
+</body>
+</html>

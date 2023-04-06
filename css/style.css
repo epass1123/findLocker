@@ -1,0 +1,322 @@
+
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    position: relative;
+    z-index: 1;
+    background: darkseagreen;
+    width: 100%;
+}
+
+.header .navbar{
+    position: fixed;
+    float: left;
+    margin: 8px 20px 10px 20px;
+}
+
+#menu{
+    position: fixed;
+    right:10px;
+    margin: 15px 10px 15px auto;
+    display: none;
+    right:0;
+}
+
+#menu li{
+    padding: 4px 10px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#menu li:hover{
+    background-color: rgb(91, 135, 15);
+    border-radius: 3px;
+}
+#hamburger{
+    display: none;
+}
+
+#hamburger + label{
+    z-index: 1;
+    position: fixed;
+    top: 10px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    display: block;
+    cursor: pointer;
+}
+
+#hamburger + label>span{
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    display: block;
+    background: black;
+    border-radius: 5px;
+    transition: all 400ms;
+}
+
+#hamburger:checked + label>span:nth-child(1){
+    top:50%;
+    transform: translate(0, -50%);
+    transform: rotate(45deg);
+}
+
+#hamburger + label>span:nth-child(2){
+    top:50%;
+    transform: translate(0, -50%);
+}
+
+#hamburger:checked + label>span:nth-child(2){
+    display: none;
+}
+
+#hamburger + label>span:nth-child(3){
+    bottom: 0;
+}
+
+#hamburger:checked + label > span:nth-child(3) {
+    top: 50%;
+    transform: translate(0, -50%);
+    transform: rotate(-45deg);
+  }
+
+#btn1 {
+    background: transparent;
+    border: transparent;
+}
+
+.header .navbar img{
+    width: 100px;
+}
+
+.map-container{
+    position: relative;
+    height: 50%;
+    width: 100%;
+}
+
+#map{
+    position: absolute;
+    z-index: 0;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+#test{
+    z-index: 1;
+    position: absolute;
+    right: 30px;
+    bottom: 0px;
+    background: transparent;
+    border: transparent;
+}
+
+#test img{
+    width: 30px;
+}
+
+#currentPos{
+    z-index: 1;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    background: transparent;
+    border: transparent;
+}
+
+#currentPos img{
+    width: 30px;
+}
+
+
+.search{
+    float: right;
+    position: fixed;
+    z-index: 1;
+    left: 130px;
+    height: 35px;
+    margin: 11px 20px 0px 5px;
+    width: 40%;
+    border-radius: 12px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    font-family: Roboto;
+}
+
+#search-bar{
+    padding: 6px;
+    position: relative;
+    display: flex;
+    justify-content:space-between;
+}
+
+#search-input{
+    position: relative;
+    background-color: #fff;
+    padding: 0 11px 0 10px;
+    text-overflow: ellipsis;
+    width: 80%;
+    border: none;
+}
+
+#search-input:focus{
+    border-color: #4d90fe;
+}
+
+#search-bar button img{
+    width: 55%;
+    color: darkblue;
+}
+
+.controller{
+    position: relative;
+    float: right;
+    height: 50%;
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#placeList{
+    font-size: 10px;
+}
+
+#placesList .item{
+    position:relative;
+    border-bottom:1px solid #888;
+    overflow: hidden;
+    cursor: pointer;
+    min-height: 65px;
+}
+
+#placesList .item span{
+    display: block;
+    margin-top:4px;
+}
+
+#placesList .item .info {
+    padding: 10px 20px 10px 10px;
+}
+
+#placesList .item .info .title{
+    font-weight: 900;
+}
+#ul1{
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    background-color: lightblue;
+}
+
+#ul1 li{
+    height: 100%;
+}
+#placesList{
+    overflow: overlay;
+    background-color: white;
+    margin: 0;
+}
+
+.item{
+}
+
+form .search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type=text]{ 
+    height: 30px;
+    border-radius: 30px;
+    border: 0;
+    outline: none;
+}
+
+input[type=button]{
+    width: 9%;
+    height: 30px;
+    border-radius: 10px;
+    border: 0;
+    background-color: blueviolet;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    width: 100%;
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+#body{
+    display: flex;
+    height: 100%;
+    flex: 1;
+    flex-direction: column;
+    z-index: 0;
+}
+
+.findWay{
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    width: 70px;
+    height: 25px;
+    display: block;
+    border: 1px solid;
+    background: url(../img/findWay.png) 0% 0% / contain no-repeat;
+    cursor: pointer;
+    border-radius: 3px;
+    text-align: right;
+    font-size: 13px;
+}
+
+@media (min-width: 576px) {
+    
+    
+}
+
+@media (min-width: 768px) {
+    .map-container {width:70%; height: 100%; float: left; z-index: 0;}
+    .controller {float: right; width: 30%; height: 100%;}
+    .header {height: 55px; display: flex; z-index: 0; flex-wrap: wrap;}
+    .header .navbar{position: relative; }
+    .header .search{position: relative; left: 0;}
+    .header #menu{position: relative; display: flex;}
+    #hamburger + label{display: none;}
+    #body {flex-direction: row; height: 90%;}
+    #ul1{height: 50px;}
+}
+
+@media (min-width: 992px) {
+    
+}
+
+@media (min-width: 1200px) {
+    
+}
