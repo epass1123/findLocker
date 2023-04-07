@@ -19,18 +19,34 @@
                 </div>
             </form>
         </div>
-        
-        <input type="checkbox" id="hamburger">
-        <label for="hamburger">
-            <span></span>    
-            <span></span>    
-            <span></span>
-        </label>
-        <ul id="menu">
-            <li id="login">로그인</li>
-            <li id="register">회원가입</li>
-            <li id="add">추가하기</li>
-        </ul>
+        <div id="sidemenu">
+            <input type="checkbox" id="hamburger">
+            <label for="hamburger">
+                <span></span>    
+                <span></span>    
+                <span></span>
+            </label>
+            <ul id="menu">
+                <li id="login">로그인</li>
+                <li id="register">회원가입</li>
+                <li id="add">추가하기</li>
+            </ul>
+        </div>
+        <script>
+            let sidemenu = document.getElementById("sidemenu")
+            let hamburger = document.getElementById("hamburger")
+            sidemenu.addEventListener('click', (event) => {
+                 // 이벤트가 상위 요소로 전파되지 않도록 막음
+                event.stopPropagation();
+            });
+            document.addEventListener('click', function(e){
+                if (event.target === sidemenu || sidemenu.contains(event.target)) {
+                    return;
+                }
+                // hamburger 체크 해제
+              hamburger.checked = false;
+            })
+        </script>
     </div>
     <div id="body">
         <div class="map-container">

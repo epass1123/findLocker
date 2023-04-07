@@ -22,28 +22,33 @@ html, body{
 
 #menu{
     position: fixed;
-    right:10px;
-    margin: 15px 10px 15px auto;
-    display: none;
-    right:0;
+    z-index: 1;
+    padding: 60px 20px 20px 20px;
+    transition: all 400ms;
+    right: -300px;
+    top: 0px;
+    height: 90%;
+    background-color: rgba(154, 210, 232, 0.8);
+    margin-top: 0;
 }
 
 #menu li{
-    padding: 4px 10px;
+    padding: 4px 0px;
     cursor: pointer;
     white-space: nowrap;
 }
 
 #menu li:hover{
-    background-color: rgb(91, 135, 15);
+    background-color: rgb(93, 164, 235);
     border-radius: 3px;
 }
+
 #hamburger{
     display: none;
 }
 
 #hamburger + label{
-    z-index: 1;
+    z-index: 2;
     position: fixed;
     top: 10px;
     right: 15px;
@@ -87,6 +92,11 @@ html, body{
     transform: translate(0, -50%);
     transform: rotate(-45deg);
   }
+
+#hamburger:checked + label +#menu{
+    display: block;
+    right: 0px;
+}
 
 #btn1 {
     background: transparent;
@@ -307,7 +317,10 @@ li a {
     .header {height: 55px; display: flex; z-index: 0; flex-wrap: wrap;}
     .header .navbar{position: relative; }
     .header .search{position: relative; left: 0;}
-    .header #menu{position: relative; display: flex;}
+    .header #menu{position: relative; display: flex; margin: 15px 10px 15px auto; background-color: transparent; right: 0; padding: 0px 4px; height: 28px;}
+    #menu li:hover{background-color: rgb(91, 135, 15); border-radius: 3px;}
+    #menu li{padding: 4px 8px;}
+    #hamburger:checked + label +#menu {display: flex;}
     #hamburger + label{display: none;}
     #body {flex-direction: row; height: 90%;}
     #ul1{height: 50px;}
