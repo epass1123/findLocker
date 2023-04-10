@@ -32,13 +32,13 @@ html, body{
     margin-top: 0;
 }
 
-#menu li{
-    padding: 4px 0px;
+#menu li a{
+    padding: 5px 5px;
     cursor: pointer;
     white-space: nowrap;
 }
 
-#menu li:hover{
+#menu li:hover a{
     background-color: rgb(93, 164, 235);
     border-radius: 3px;
 }
@@ -142,6 +142,7 @@ html, body{
     bottom: 0px;
     background: transparent;
     border: transparent;
+    cursor: pointer;
 }
 
 #currentPos img{
@@ -315,8 +316,8 @@ li a {
     .header .navbar{position: relative; }
     .header .search{position: relative; left: 0;}
     .header #menu{position: relative; display: flex; margin: 15px 10px 15px auto; background-color: transparent; right: 0; padding: 0px 4px; height: 28px;}
-    #menu li:hover{background-color: rgb(91, 135, 15); border-radius: 3px;}
-    #menu li{padding: 4px 8px;}
+    #menu li:hover a{background-color: rgb(91, 135, 15); border-radius: 3px;}
+    #menu li a{padding: 4px 8px;}
     #hamburger:checked + label +#menu {display: flex;}
     #hamburger + label{display: none;}
     #body {flex-direction: row; height: 90%;}

@@ -9,3 +9,5 @@ package.json
 
 ## 내부데이터
 *.csv
+
+.DS_Store
