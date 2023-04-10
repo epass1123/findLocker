@@ -241,9 +241,6 @@ html, body{
     margin: 0;
 }
 
-.item{
-}
-
 form .search{
     display: flex;
     justify-content: center;

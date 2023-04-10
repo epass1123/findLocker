@@ -19,7 +19,6 @@
                 </div>
             </form>
         </div>
-        <div id="sidemenu">
             <input type="checkbox" id="hamburger">
             <label for="hamburger">
                 <span></span>    
@@ -31,20 +30,20 @@
                 <li id="register">회원가입</li>
                 <li id="add">추가하기</li>
             </ul>
-        </div>
         <script>
-            let sidemenu = document.getElementById("sidemenu")
-            let hamburger = document.getElementById("hamburger")
-            sidemenu.addEventListener('click', (event) => {
-                 // 이벤트가 상위 요소로 전파되지 않도록 막음
-                event.stopPropagation();
-            });
-            document.addEventListener('click', function(e){
-                if (event.target === sidemenu || sidemenu.contains(event.target)) {
-                    return;
+            let menu = document.getElementById("menu")
+            let hamburger = document.getElementById("hamburger");
+            let label = document.querySelector('label[for="hamburger"]')
+            document.addEventListener('click',(e)=>{
+                const target = e.target;
+                if(target === hamburger || hamburger.contains(target)){
+                    e.preventDefault();
                 }
-                // hamburger 체크 해제
-              hamburger.checked = false;
+                else if(target === label || label.contains(target)){
+                    hamburger.checked = !hamburger.checked
+                }else if(!menu.contains(target)){
+                    hamburger.checked = false;
+                }
             })
         </script>
     </div>
