@@ -1,0 +1,43 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: azure;
+}
+
+.register{
+    width: 80%;
+    margin: 100px auto;
+}
+
+.register > h2{
+    margin: 10px 0px;
+
+}
+
+.register-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.register-form > input{
+    padding: 0 10px;
+    margin: 8px 0;
+    height: 30px;
+    border: none;
+    background-color:rgb(206, 232, 255);
+    border-radius: 10px;
+}
+
+.register-form > input[type="submit"]{
+    margin: 5px 0;
+    border-radius: 10px;
+    border: none;
+    background-color:rgba(154, 210, 232, 0.8);
+}
+
+@media (min-width: 576px) {
+    .register{
+        width: 50%;
+        margin: 100px auto;
+    }
+
+}

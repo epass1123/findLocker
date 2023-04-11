@@ -102,5 +102,21 @@ app.get("/locker", async (req, res) => {
     }
 });
 
+app.get("/register",(req, res)=>{
+    res.render('register',{
+        
+    })
+})
+
+app.get('/login',function(req, res){
+    res.render('login',{
+    })
+});
+
+app.get('/add',function(req,res){
+    res.render('add',{
+
+    })
+});
   
 app.listen(process.env.PORT, ()=>console.log("서버 open"))
