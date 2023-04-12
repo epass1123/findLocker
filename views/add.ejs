@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/add.css">
     <title>add</title>
 </head>
 <body>
-    추가
+    <div class="container">
+        <h2>추가하기</h2>
+        <form action="/add" method="post" enctype="multipart/form-data">
+            작성자 <input type="text" name="userName">
+            비밀번호 <input type="password" name="password">
+            이미지<input type="file" multiple="multiple" name="imageFiles" >
+            <input type="text" name="address" placeholder="물품보관함 주소 적어주세요.">
+            <input type="text" name="location" placeholder="물품보관함 상세주소를 적어주세요">
+            <input type="text" name="price" placeholder="물품보관함 이용료를 적어주세요">
+            <input type="submit"/>
+        </form>
+    </div>
 </body>
 </html>
