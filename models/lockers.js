@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
-console.log(process.env.PORT)
 const lockerSchema = new mongoose.Schema({
     id:{
         type:Number,

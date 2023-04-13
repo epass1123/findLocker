@@ -7,6 +7,7 @@ const {getCoord} = await import("./js/coord.js")
 import dotenv from 'dotenv'
 import path from 'path'
 import fs from 'fs'
+import registerRouter from "./routes/register.js"
 
 const app = express();
 const __dirname = path.resolve();
@@ -16,11 +17,13 @@ app.set('views','./views');
 app.set("view engine","ejs");
 app.engine('html', ejs.renderFile);
 
-app.use(express.static(__dirname))
+app.use(express.static(__dirname));
+app.use(express.json({ extended: false })); 
 //__dirname 하위의 폴더들을 사용
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use("/routes/register", registerRouter);
 
 import mongoose from 'mongoose';
 mongoose.set('strictQuery', true)
