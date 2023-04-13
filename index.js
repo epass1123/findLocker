@@ -2,7 +2,7 @@ import ejs from 'ejs'
 import express from 'express'
 import bodyParser from 'body-parser'
 import Locker from './models/lockers.js'
-import api from "./models/api_csv.js"
+import api from "./js/api_csv.js"
 const {getCoord} = await import("./js/coord.js")
 import dotenv from 'dotenv'
 import path from 'path'
@@ -104,7 +104,7 @@ app.get("/locker", async (req, res) => {
 
 app.get("/register",(req, res)=>{
     res.render('register',{
-        
+
     })
 })
 
