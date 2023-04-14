@@ -8,6 +8,7 @@ import dotenv from 'dotenv'
 import path from 'path'
 import fs from 'fs'
 import registerRouter from "./routes/register.js"
+import loginRouter from "./routes/login.js"
 
 const app = express();
 const __dirname = path.resolve();
@@ -18,12 +19,11 @@ app.set("view engine","ejs");
 app.engine('html', ejs.renderFile);
 
 app.use(express.static(__dirname));
-app.use(express.json({ extended: false })); 
+app.use(express.json({ extended: false }));
 //__dirname 하위의 폴더들을 사용
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use("/routes/register", registerRouter);
 
 import mongoose from 'mongoose';
 mongoose.set('strictQuery', true)
@@ -39,6 +39,8 @@ mongoose.connect(
         console.log(err);
 });
 
+app.use("/routes/register", registerRouter);
+app.use("/routes/login", loginRouter);
 
 //보관함들 리스트에 좌표정보 추가
 const array = async function(arr){
