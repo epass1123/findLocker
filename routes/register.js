@@ -7,17 +7,25 @@ router.post(
     "/",
     async (req, res) => {
       // req의 body 정보를 사용하려면 server.js에서 따로 설정을 해줘야함
-      const { name, id ,email, password } = req.body;
+      const { name, id ,email, password, passwordChk } = req.body;
     
       try {
         // email을 비교하여 user가 이미 존재하는지 확인
         let user = await User.findOne({ id });
-              if (user) {
+        if (user) {
+            alert("이미 존재하는 아이디입니다.")
           return res
             .status(400)
-            .json({ errors: [{ msg: "User already exists" }] });
+            .redirect("/register")
+            // .json({ errors: [{ msg: "User already exists" }] });
         }
-              
+
+        else if(password !== passwordChk){
+            return res
+            .status(400)
+            .json({ errors: {msg: "비밀번호 확인값이 비밀번호와 다릅니다"}})
+        }
+        
         // user에 name, email, password 값 할당
         user = new User({
           name,

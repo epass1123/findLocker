@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
     email:{
         type:String,
     },
+    authority:{
+        type:String,
+        default:"일반"
+    }
 });
 
 const user = mongoose.model("User",userSchema);
