@@ -5,6 +5,13 @@ import jwt from 'jsonwebtoken';
 import expressSession from "express-session"
 const router = express.Router();
 
+router.get(
+  "/",
+    async(req, res)=>{
+      res.render("login",{})
+    }
+)
+
 router.post(
     "/",
     async (req, res) => {

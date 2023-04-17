@@ -3,6 +3,14 @@ import User from '../models/users.js';
 import bcrypt from 'bcrypt'
 const router = express.Router();
 
+router.get("/",
+    async(req,res)=>{
+        res.render("register",{
+            
+        })
+    }    
+)
+
 router.post(
     "/",
     async (req, res) => {
