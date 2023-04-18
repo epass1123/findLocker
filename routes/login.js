@@ -1,8 +1,7 @@
 import express from 'express';
 import User from '../models/users.js';
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-import expressSession from "express-session"
+// import jwt from 'jsonwebtoken';
 const router = express.Router();
 
 router.get(
@@ -27,21 +26,24 @@ router.post(
                 .send(`
                 <script>
                   alert('등록되지 않은 회원입니다.')
-                  location.href = '/login'
+                  location.href = '/routes/login'
                 </script>`);
                 }
           const check = await bcrypt.compare(password, user.password);
           if(check){
-              const token = jwt.sign({userId: user._id}, 'secretToken');
-              return res.redirect("/")
-              
+            // const token = jwt.sign({userId: user._id}, 'secretToken');
+            console.log(token)
+            req.session.user = user
+            console.log(req.session)
+            return res.redirect("/")
+            
           }else{
             return res
               .status(400)
               .send(`
               <script>
                 alert('등록되지 않은 회원입니다.')
-                location.href = '/login'
+                location.href = '/routes/login'
               </script>`)
           }
                

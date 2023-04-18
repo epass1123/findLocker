@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/",
     async(req,res)=>{
         res.render("register",{
-            
+
         })
     }    
 )
@@ -21,17 +21,23 @@ router.post(
         // email을 비교하여 user가 이미 존재하는지 확인
         let user = await User.findOne({ id });
         if (user) {
-            alert("이미 존재하는 아이디입니다.")
           return res
             .status(400)
-            .redirect("/register")
-            // .json({ errors: [{ msg: "User already exists" }] });
+            .send(`
+            <script>
+              alert('이미 존재하는 회원아이디입니다.')
+              location.href = '/routes/register'
+            </script>`)
         }
 
         else if(password !== passwordChk){
             return res
             .status(400)
-            .json({ errors: {msg: "비밀번호 확인값이 비밀번호와 다릅니다"}})
+            .send(`
+            <script>
+              alert('비밀번호 확인값이 비밀번호와 다릅니다')
+              location.href = '/routes/login'
+            </script>`)
         }
         
         // user에 name, email, password 값 할당
@@ -48,8 +54,14 @@ router.post(
   
         await user.save(); // db에 user 저장
   
-        res.send("Success");
-      } catch (error) {
+        return res
+        .send(`
+            <script>
+            alert('가입성공')
+            location.href = '/'
+            </script>`)
+
+    } catch (error) {
         console.error(error.message);
         res.status(500).send("Server Error");
       }

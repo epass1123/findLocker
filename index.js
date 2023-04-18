@@ -1,14 +1,18 @@
 import ejs from 'ejs'
 import express from 'express'
 import bodyParser from 'body-parser'
-import Locker from './models/lockers.js'
-
 import dotenv from 'dotenv'
 import path from 'path'
+import Locker from './models/lockers.js'
+
+import expressSession from "express-session"
+import MemoryStore from "memorystore"
+const memorystore = MemoryStore(expressSession);
 
 import lockerRouter from "./routes/locker.js"
 import registerRouter from "./routes/register.js"
 import loginRouter from "./routes/login.js"
+import addRouter from "./routes/add.js";
 
 const app = express();
 const __dirname = path.resolve();
@@ -25,6 +29,19 @@ app.use(express.json({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+
+const maxAge = 1000 * 60 * 5;
+
+app.use(expressSession({
+    cookie: {
+        maxAge,
+      },
+    store: new memorystore({ checkPeriod: maxAge }),
+    resave: false,
+    secret: 'kong',
+    saveUninitialized: true,
+}));
+
 import mongoose from 'mongoose';
 mongoose.set('strictQuery', true)
 mongoose.connect(
@@ -39,9 +56,11 @@ mongoose.connect(
         console.log(err);
 });
 
+//미들웨어
 app.use("/routes/locker", lockerRouter);
 app.use("/routes/register", registerRouter);
 app.use("/routes/login", loginRouter);
+app.use("/routes/add", addRouter);
 
 app.get('/',async function(req,res){
     let list = await Locker.find({});

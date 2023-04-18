@@ -4,6 +4,7 @@ import expressSession from "express-session"
 import api from "../js/api_csv.js"
 const {getCoord} = await import("../js/coord.js")
 const router = express.Router();
+
 const array = async function(arr){
     for(let i = 0;i<api.length;i++){
         await getCoord(api[i].stationName + api[i].line).then(x=>{

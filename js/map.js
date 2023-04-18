@@ -23,7 +23,6 @@ var markerSize = new kakao.maps.Size(MARKER_WIDTH, MARKER_HEIGHT),
       
 //ejs로 부터 받아온 마커
 var lockerList = _list;
-console.log(lockerList);
 
 var search = document.getElementById('btn1')
 search.onclick = searchPlaces;
