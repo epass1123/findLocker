@@ -26,8 +26,12 @@
                 <span></span>
             </label>
             <ul id="menu">
-                <li id="login"><a href="routes/login">로그인</a></li>
-                <li id="register"><a href="routes/register">회원가입</a></li>
+                <% if(user !== null){ %>
+                    <li id="welcome"><a href="routes/profile"><%=user.name%></a></li>
+                <%}else{%>
+                    <li id="login"><a href="routes/login">로그인</a></li>
+                    <li id="register"><a href="routes/register">회원가입</a></li>
+                <%}%>
                 <li id="add"><a href="routes/add">추가하기</a></li>
             </ul>
         <script>

@@ -43,6 +43,11 @@ html, body{
     border-radius: 3px;
 }
 
+#welcome:not(#menu):hover a{
+    background-color: rgb(27, 43, 58);
+    border: none;
+}
+
 #hamburger{
     display: none;
 }

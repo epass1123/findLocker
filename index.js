@@ -64,10 +64,20 @@ app.use("/routes/add", addRouter);
 
 app.get('/',async function(req,res){
     let list = await Locker.find({});
-    res.render('index',{
-        appkey: process.env.APPKEY,
-        list: list
+    if(req.session.user){
+        res.render('index',{
+            user: req.session.user,
+            appkey: process.env.APPKEY,
+            list: list
+        })
+    }
+    else{
+        res.render('index',{
+            user: null,
+            appkey: process.env.APPKEY,
+            list: list
     })
+}
 });
 
 app.get('/routes/add',function(req,res){

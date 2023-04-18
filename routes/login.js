@@ -1,12 +1,17 @@
 import express from 'express';
 import User from '../models/users.js';
 import bcrypt from 'bcrypt';
+import alertMove from '../js/alertMove.js';
 // import jwt from 'jsonwebtoken';
 const router = express.Router();
 
 router.get(
   "/",
     async(req, res)=>{
+      if(req.session.user){
+        return res
+          .send(alertMove("/","이미 로그인 되어있습니다."))
+      }
       res.render("login",{})
     }
 )
@@ -23,16 +28,11 @@ router.post(
             if (!user) {
                 return res
                 .status(400)
-                .send(`
-                <script>
-                  alert('등록되지 않은 회원입니다.')
-                  location.href = '/routes/login'
-                </script>`);
+                .send(alertMove("/routes/login","등록되지 않은 회원입니다."));
                 }
           const check = await bcrypt.compare(password, user.password);
           if(check){
             // const token = jwt.sign({userId: user._id}, 'secretToken');
-            console.log(token)
             req.session.user = user
             console.log(req.session)
             return res.redirect("/")
@@ -40,11 +40,7 @@ router.post(
           }else{
             return res
               .status(400)
-              .send(`
-              <script>
-                alert('등록되지 않은 회원입니다.')
-                location.href = '/routes/login'
-              </script>`)
+              .send(alertMove("/routes/login","등록되지 않은 회원입니다."))
           }
                
           }catch(err){

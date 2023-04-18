@@ -1,6 +1,7 @@
 import express from 'express';
 import User from '../models/users.js';
 import bcrypt from 'bcrypt'
+import alertMove from '../js/alertMove.js';
 const router = express.Router();
 
 router.get("/",
@@ -23,21 +24,13 @@ router.post(
         if (user) {
           return res
             .status(400)
-            .send(`
-            <script>
-              alert('이미 존재하는 회원아이디입니다.')
-              location.href = '/routes/register'
-            </script>`)
+            .send(alertMove("/routes/register",'이미 존재하는 회원아이디입니다.'))
         }
 
         else if(password !== passwordChk){
             return res
             .status(400)
-            .send(`
-            <script>
-              alert('비밀번호 확인값이 비밀번호와 다릅니다')
-              location.href = '/routes/login'
-            </script>`)
+            .send(alertMove("/routes/login","비밀번호 확인값이 비밀번호와 다릅니다."))
         }
         
         // user에 name, email, password 값 할당
@@ -55,11 +48,7 @@ router.post(
         await user.save(); // db에 user 저장
   
         return res
-        .send(`
-            <script>
-            alert('가입성공')
-            location.href = '/'
-            </script>`)
+        .send(alertMove("/","가입성공"))
 
     } catch (error) {
         console.error(error.message);
