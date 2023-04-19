@@ -25,6 +25,7 @@ html, body{
     z-index: 1;
     padding: 60px 20px 20px 20px;
     transition: all 400ms;
+    width: 20%;
     right: -300px;
     top: 0px;
     height: 90%;
@@ -43,9 +44,33 @@ html, body{
     border-radius: 3px;
 }
 
+#welcome{
+    display: inline-block;
+    position: relative;
+}
+
 #welcome:not(#menu):hover a{
-    background-color: rgb(27, 43, 58);
+    background-color: transparent;
     border: none;
+}
+
+#welcome:hover > #userMenu{
+    display: block;
+    background-color: transparent;
+}
+
+#userMenu{
+    display: none;
+    position: absolute;
+    z-index: 2;
+}
+
+#userMenu li{
+    display: block;
+}
+
+#userMenu:not(#menu) li a{
+    text-align: center;
 }
 
 #hamburger{
@@ -317,12 +342,22 @@ li a {
 @media (min-width: 768px) {
     .map-container {width:70%; height: 100%; float: left; z-index: 0;}
     .controller {float: right; width: 30%; height: 100%;}
-    .header {height: 55px; display: flex; z-index: 0; flex-wrap: wrap;}
+    .header {height: 55px; display: flex; z-index: 2; flex-wrap: wrap;}
     .header .navbar{position: relative; }
     .header .search{position: relative; left: 0;}
     .header #menu{position: relative; display: flex; margin: 15px 10px 15px auto; background-color: transparent; right: 0; padding: 0px 4px; height: 28px;}
     #menu li:hover a{background-color: rgb(91, 135, 15); border-radius: 3px;}
     #menu li a{padding: 4px 8px;}
+    #welcome:hover > #userMenu{
+        display: block;
+        background-color: darkseagreen;
+        border-radius: 3px;
+        opacity: 0.9;
+    }
+    #welcome:not(#menu):hover a{
+        background-color: transparent;
+        border: none;
+    }
     #hamburger:checked + label +#menu {display: flex;}
     #hamburger + label{display: none;}
     #body {flex-direction: row; height: 90%;}

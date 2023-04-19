@@ -27,12 +27,18 @@
             </label>
             <ul id="menu">
                 <% if(user !== null){ %>
-                    <li id="welcome"><a href="routes/profile"><%=user.name%></a></li>
+                        <li id="welcome">
+                            <a href="routes/profile"><%=user.name%>님</a>
+                            <ul id="userMenu">
+                                <li><a href="routes/profile">내 정보</a></li>
+                                <li><a href="routes/add">추가하기</a></li>
+                                <li><a href="">로그아웃</a></li>
+                            </ul>
+                        </li>
                 <%}else{%>
                     <li id="login"><a href="routes/login">로그인</a></li>
                     <li id="register"><a href="routes/register">회원가입</a></li>
                 <%}%>
-                <li id="add"><a href="routes/add">추가하기</a></li>
             </ul>
         <script>
             let menu = document.getElementById("menu")
