@@ -13,6 +13,7 @@ import lockerRouter from "./routes/locker.js"
 import registerRouter from "./routes/register.js"
 import loginRouter from "./routes/login.js"
 import addRouter from "./routes/add.js";
+import logoutRouter from "./routes/logout.js";
 
 const app = express();
 const __dirname = path.resolve();
@@ -61,6 +62,7 @@ app.use("/routes/locker", lockerRouter);
 app.use("/routes/register", registerRouter);
 app.use("/routes/login", loginRouter);
 app.use("/routes/add", addRouter);
+app.use("/routes/logout", logoutRouter);
 
 app.get('/',async function(req,res){
     let list = await Locker.find({});
