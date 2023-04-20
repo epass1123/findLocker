@@ -32,7 +32,11 @@
                             <ul id="userMenu">
                                 <li><a href="routes/profile">내 정보</a></li>
                                 <li><a href="routes/add">추가하기</a></li>
+                                <%if(manager){%>
+                                    <li><a href="routes/manage">관리</a></li>
+                                <%}%>
                                 <li><a href="routes/logout">로그아웃</a></li>
+                                
                             </ul>
                         </li>
                 <%}else{%>
@@ -61,7 +65,9 @@
         <div class="map-container">
             <div id="map"></div>
             <button id="currentPos"><img src="img/target.png" alt=""></button>
-            <button id="test"><img src="img/010-shield.png" alt=""></button>
+            <form action="/routes/locker" method="post">
+                <button id="test" name="foo" value="post"><img src="img/010-shield.png" alt=""></button>
+            </form>
             <script>
                 var _list =  "<%=JSON.stringify(list)%>";
                 _list = _list.replaceAll('&#34;','\"');

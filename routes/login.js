@@ -19,7 +19,7 @@ router.get(
 router.post(
     "/",
     async (req, res) => {
-      // req의 body 정보를 사용하려면 server.js에서 따로 설정을 해줘야함
+      // req의 body 정보를 사용하려면 index.js에서 따로 설정을 해줘야함
       const { name, id ,email, password } = req.body;
     
       try {

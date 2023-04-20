@@ -6,8 +6,15 @@ const __dirname = path.resolve();
 dotenv.config();
 
 export async function getCoord(x){
+        // let subway;
+        // if(x[x.length-1]==="역"){
+        //     subway = x
+        // }
+        // else{
+        //     subway = ;
+        // }
         const res = await axios({
-            url: 'https://dapi.kakao.com/v2/local/search/keyword.json?query='+encodeURIComponent(x)+"&category_group_code=SW8&page=1",
+            url: 'https://dapi.kakao.com/v2/local/search/keyword.json?query='+encodeURIComponent(x)+"&page=1",
             method: 'get',
             headers: 'Authorization : KakaoAK e639f9820bd9dfd6a0627ecb6b06f5f3'
         }).then((res)=>{

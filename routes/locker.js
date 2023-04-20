@@ -1,6 +1,5 @@
 import express from 'express';
 import Locker from '../models/lockers.js'
-import expressSession from "express-session"
 import api from "../js/api_csv.js"
 const {getCoord} = await import("../js/coord.js")
 const router = express.Router();
@@ -29,14 +28,14 @@ router.get("/", async (req, res) => {
       res.status(200).send(locker);
       console.log("get")
     } catch (e) {
+        console.log(e);
       res.status(500).json({
-        message: "User 조회 실패",
+        message: "조회 실패",
       });
     }
 });
 
 router.post('/', async (req,res)=>{
-const locker = new Locker(req.body);
 try{
     await array(list).then(x=>
         Locker.insertMany(x,{ordered:false}).then(function(){
@@ -50,11 +49,11 @@ try{
             }
         })
     )
-    await locker.save();
     res.status(204).send();
     console.log("post")
 }
 catch(e){
+    console.log(e)
     res.status(500).json({
         message: "저장 실패"
     })

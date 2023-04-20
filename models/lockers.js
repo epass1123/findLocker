@@ -12,9 +12,13 @@ const lockerSchema = new mongoose.Schema({
         required: true,
         // unique:true,
     },
-    line:{
+    userName:{
         type:String,
         required:true,
+        default:"관리자"
+    },
+    line:{
+        type:String,
     },
     floor:{
         type:String,

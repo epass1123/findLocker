@@ -30,7 +30,6 @@ app.use(express.json({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-
 const maxAge = 1000 * 60 * 5;
 
 app.use(expressSession({
@@ -93,10 +92,4 @@ app.get('/',async function(req,res){
 }
 });
 
-app.get('/routes/add',function(req,res){
-    res.render('add',{
-
-    })
-});
-  
 app.listen(process.env.PORT, ()=>console.log("서버 open"))
