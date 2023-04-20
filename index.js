@@ -67,11 +67,22 @@ app.use("/routes/logout", logoutRouter);
 app.get('/',async function(req,res){
     let list = await Locker.find({});
     if(req.session.user){
-        res.render('index',{
+        const auth = req.session.user.authority 
+        if(auth === "관리자"){
+            res.render('index',{
+                user: req.session.user,
+                appkey: process.env.APPKEY,
+                list: list,
+                manager: true,
+            })
+        }
+        else{res.render('index',{
             user: req.session.user,
             appkey: process.env.APPKEY,
-            list: list
+            list: list,
+            manager: false,
         })
+        }
     }
     else{
         res.render('index',{

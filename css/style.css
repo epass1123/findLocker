@@ -60,6 +60,7 @@ html, body{
 }
 
 #userMenu{
+    width: 100%;
     display: none;
     position: absolute;
     z-index: 2;
@@ -348,6 +349,10 @@ li a {
     .header #menu{position: relative; display: flex; margin: 15px 10px 15px auto; background-color: transparent; right: 0; padding: 0px 4px; height: 28px;}
     #menu li:hover a{background-color: rgb(91, 135, 15); border-radius: 3px;}
     #menu li a{padding: 4px 8px;}
+    #welcome{
+        width: 70%;
+        margin: 0px 0px 0px auto;
+    }
     #welcome:hover > #userMenu{
         display: block;
         background-color: darkseagreen;
