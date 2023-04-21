@@ -6,13 +6,6 @@ const __dirname = path.resolve();
 dotenv.config();
 
 export async function getCoord(x){
-        // let subway;
-        // if(x[x.length-1]==="역"){
-        //     subway = x
-        // }
-        // else{
-        //     subway = ;
-        // }
         const res = await axios({
             url: 'https://dapi.kakao.com/v2/local/search/keyword.json?query='+encodeURIComponent(x)+"&page=1",
             method: 'get',
