@@ -64,6 +64,7 @@ html, body{
     position: relative;
     height: 50%;
     width: 100%;
+    padding: 60px 20px 0px 20px;
 }
 
 .search{
@@ -158,12 +159,12 @@ li a {
 @media (min-width: 768px) {
     .container {width:70%; height: 100%; float: left; z-index: 0;}
     .controller {float: right; width: 30%; height: 100%;}
-    .header {height: 55px; display: flex; z-index: 2; flex-wrap: wrap;padding: 0px 20px;}
+    .header {position: fixed; height: 55px; display: flex; z-index: 2; flex-wrap: wrap;padding: 0px 20px;}
     .header .navbar{position: relative; }
     .header .search{position: relative; left: 0;}
     #menu{
         padding-top: 60px;
-        width: 18%;
+        width: 15%;
         left: 0px;
         height: 90%;
         margin-top: 0;

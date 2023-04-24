@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/mypage.css">
+    <link rel="stylesheet" href="/../../css/mypage.css">
     <title>맡겨줘-내 정보</title>
 </head>
 <body>
     <div class="header">
-        <a class="navbar" href="/"><img src="../img/logo4.png" alt=""></a>
+        <a class="navbar" href="/"><img src="../../img/logo4.png" alt=""></a>
         <div class="search">
             <form onsubmit="searchPlaces(); return false">
                 <div id="search-bar">
                     <input id="search-input" type="search" placeholder="위치를 검색하세요." value="">
-                    <button id="btn1" type="submit"><img src="../img/001-search.png" alt="Search"></button>
+                    <button id="btn1" type="submit"><img src="../../img/001-search.png" alt="Search"></button>
                 </div>
             </form>
         </div>
     </div>
     <div id="body">
         <ul id="menu">
-            <h2>안녕하세요 <%= %>님</h2>
+            <h2>안녕하세요 <%= user.name %>님</h2>
             <div>
                 <b>내 회원정보</b>
                 <li id="userInfo"><a href="routes/user/modify">회원정보수정</a></li>
@@ -35,7 +35,12 @@
             </div>
         </ul>
         <div class="container">
-            
+            <h2>내 회원정보</h2>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
         </div>
     </div>
 
