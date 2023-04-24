@@ -64,7 +64,38 @@ html, body{
     position: relative;
     height: 50%;
     width: 100%;
-    padding: 60px 20px 0px 20px;
+    padding: 60px 40px 0px 40px;
+}
+
+.container > h2 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid gray;
+    text-align: center;
+}
+
+.container > .userInfo {
+    font-size: medium;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 30px auto;
+}
+
+.container > .userInfo > b {
+    font-size: large;
+}
+
+.container > .userInfo > li {
+    margin: 10px 0px 50px 0;
+}
+
+.container > .userInfo > button {
+    background:rgb(13, 97, 31);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 30px;
+    color:white
 }
 
 .search{
@@ -153,13 +184,12 @@ li a {
 
 @media (min-width: 576px) {
     
-    
 }
 
 @media (min-width: 768px) {
     .container {width:70%; height: 100%; float: left; z-index: 0;}
     .controller {float: right; width: 30%; height: 100%;}
-    .header {position: fixed; height: 55px; display: flex; z-index: 2; flex-wrap: wrap;padding: 0px 20px;}
+    .header {position: sticky; top: 0; height: 55px; display: flex; z-index: 2; flex-wrap: wrap;padding: 0px 20px;}
     .header .navbar{position: relative; }
     .header .search{position: relative; left: 0;}
     #menu{

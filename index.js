@@ -31,10 +31,11 @@ app.use(express.json({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-const maxAge = 1000 * 60 * 5;
+const maxAge = 1000 * 60 * 20;
 
 app.use(expressSession({
     cookie: {
+        path: '/',
         maxAge,
       },
     store: new memorystore({ checkPeriod: maxAge }),

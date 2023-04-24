@@ -12,6 +12,7 @@ router.get(
         return res
           .send(alertMove("/","이미 로그인 되어있습니다."))
       }
+      req.session.prevPage = req.headers.referer
       res.render("login",{})
     }
 )
@@ -34,8 +35,7 @@ router.post(
           if(check){
             // const token = jwt.sign({userId: user._id}, 'secretToken');
             req.session.user = user
-            console.log(req.session)
-            return res.redirect("/")
+            return res.redirect(req.session.prevPage)
             
           }else{
             return res
