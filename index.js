@@ -15,6 +15,7 @@ import loginRouter from "./routes/login.js"
 import addRouter from "./routes/add.js";
 import logoutRouter from "./routes/logout.js";
 import mypageRouter from "./routes/user/index.js";
+import modifyRouter from "./routes/user/myinfo/modify.js"
 
 const app = express();
 const __dirname = path.resolve();
@@ -65,6 +66,8 @@ app.use("/routes/login", loginRouter);
 app.use("/routes/add", addRouter);
 app.use("/routes/logout", logoutRouter);
 app.use("/routes/user/index", mypageRouter);
+app.use("/routes/user/myinfo/modify", modifyRouter);
+
 
 app.get('/',async function(req,res){
     let list = await Locker.find({});

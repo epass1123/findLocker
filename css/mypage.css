@@ -98,6 +98,63 @@ html, body{
     color:white
 }
 
+.container > #popup{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.container > #popup > #passwordChk{
+    position: absolute;
+    /* display: flex;
+    flex-direction: column; */
+    overflow: hidden;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 40%;
+    height: 30%;
+    border-radius: 5px;
+    text-align: center;
+    background: #fff;
+}
+
+.container > #popup > #passwordChk > h2{
+    color: #fff;
+    margin : 0;
+    
+    border-bottom: 1px solid gray;
+    background: darkseagreen;
+    padding: 10px 0 10px 0;
+}
+
+.container > #popup > #passwordChk > form > input{
+    margin-bottom: 10px;
+    height: 20px;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.container > #popup > #passwordChk > form > button{
+    border-radius: 4px;
+    background-color: rgb(46 206 61 / 48%);
+    height: 25px;
+    border: none;
+}
+
+.container > #popup > #passwordChk  > button{
+    border-radius: 4px;
+    background-color: rgb(255 163 163);
+    width: 40%;
+    height: 25px;
+    border: none;
+}
 .search{
     float: right;
     position: fixed;

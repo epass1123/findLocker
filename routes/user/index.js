@@ -1,6 +1,7 @@
 import express from "express";
-import User from "../../models/users.js";
 import alertMove from "../../js/util/alertMove.js";
+import User from '../../models/users.js';
+import bcrypt from 'bcrypt'
 const router = express.Router();
 
 router.get('/',
@@ -22,7 +23,23 @@ router.get('/',
 
 router.post('/',
     async (req,res)=>{
-        
+        const { password } = req.body;
+        try{
+            let id = req.session.user.id
+            let user = await User.findOne({ id });
+            const check = await bcrypt.compare(password, user.password);
+          if(check){
+            return res.redirect("../user/myinfo/modify")
+          }
+          else{
+            return res.
+            send(alertMove("../user/index", "비밀번호가 다릅니다."))
+          }
+        }
+        catch(e){
+            console.log(e)
+        }
+
     }
 )
 
