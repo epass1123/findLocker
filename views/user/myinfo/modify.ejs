@@ -35,6 +35,23 @@
             </div>
         </ul>
         <div class="container">
+            <script>
+                function chkSame(){
+                    var pw = document.getElementsByName("password")[0].value;
+                    var pwChk = document.getElementsByName("passwordChk")[0].value;
+                    var alertChk = document.getElementById("alertChk");
+                    if(pw!=='' && pwChk!==''){
+                        if(pw===pwChk){
+                            alertChk.innerHTML="비밀번호가 일치합니다.";
+                            alertChk.style.color = 'blue';
+                        }
+                        else{
+                            alertChk.innerHTML="비밀번호가 일치하지 않습니다.";
+                            alertChk.style.color = 'red';
+                        }
+                    }
+                }
+            </script>
             <h2>회원정보 수정</h2>
             <form method="post" class="userInfo">
                 <b>아이디</b>
@@ -44,9 +61,12 @@
                 <b>이메일</b>
                 <input type="email" name="email" value="<%= user.email %>" required></input>
                 <b>비밀번호</b>
-                <input type="password" name="password" required></input>
-                <b>비밀번호 확인</b>
-                <input type="password" name="passwordChk" required></input>
+                <input type="password" name="password" onchange="chkSame()" required></input>
+                <div id="doubleChk">
+                    <b class="pwChk" style="font-size: large;">비밀번호 확인</b>
+                    <b id="alertChk"></b>
+                </div>
+                <input type="password" name="passwordChk" onchange="chkSame()" required></input>
                 <button type="submit">변경하기</button>
             </form>
         </div>
