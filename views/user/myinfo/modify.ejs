@@ -23,7 +23,7 @@
         <ul id="menu">
             <h2>안녕하세요 <%= user.name %>님</h2>
             <div>
-                <b>내 회원정보</b>
+                <b><a href="../index">내 회원정보</a></b>
                 <li id="userInfo"><a href="modify">회원정보수정</a></li>
                 <li id="withdrawl"><a href="withdrawl">회원탈퇴</a></li>
             </div>
@@ -35,16 +35,20 @@
             </div>
         </ul>
         <div class="container">
-            <h2>내 회원정보</h2>
-            <ul class="userInfo">
+            <h2>회원정보 수정</h2>
+            <form method="post" class="userInfo">
                 <b>아이디</b>
-                <li><%= user.id %></li>
+                <input type="text" name="id" value="<%= user.id %>" required></input>
                 <b>이름</b>
-                <li><%= user.name %></li>
+                <input type="text" name="name" value="<%= user.name %>" required></input>
                 <b>이메일</b>
-                <li><%= user.email %></li>
-                <button onclick="location.href='modify'">회원정보 수정하기</button>
-            </ul>
+                <input type="email" name="email" value="<%= user.email %>" required></input>
+                <b>비밀번호</b>
+                <input type="password" name="password" required></input>
+                <b>비밀번호 확인</b>
+                <input type="password" name="passwordChk" required></input>
+                <button type="submit">변경하기</button>
+            </form>
         </div>
     </div>
 

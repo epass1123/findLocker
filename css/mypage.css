@@ -6,6 +6,10 @@ html, body{
     flex-direction: column;
 }
 
+a{
+    text-decoration: none;
+}
+
 .header{
     position: relative;
     z-index: 1;
@@ -46,6 +50,10 @@ html, body{
     color: gray;
 }
 
+#menu > div > b > a {
+    color: black;
+}
+
 #menu li:hover a{
     color: black;
     border-radius: 3px;
@@ -79,6 +87,23 @@ html, body{
     flex-direction: column;
     width: 200px;
     margin: 30px auto;
+}
+
+.container > form {
+    font-size: medium;
+    display: flex;
+    flex-direction: column;
+    width: 35%!important;
+    margin: 30px auto;
+}
+
+.container > .userInfo > input{
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    background: rgba(0, 0, 0, 0.3);
+    height: 25px;
+    padding: 0 0 0 7px;
 }
 
 .container > .userInfo > b {
