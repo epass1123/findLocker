@@ -6,6 +6,11 @@ const lockerSchema = new mongoose.Schema({
         required:true,
         unique:true,
     },
+    password:{
+        type:String,
+        required: true,
+        default: "관리자"
+    },
     stationName:{
         type:String,
         trim:true,

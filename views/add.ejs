@@ -11,14 +11,14 @@
     <div class="container">
         <h2>추가하기</h2>
         <form action="" method="post">
-            작성자 <input type="text" name="userName" placeholder=<%= name ? name : "익명"%> disabled>
+            작성자 <input type="text" name="userName" value=<%= name ? name : "익명"%> readonly>
             비밀번호 <input type="password" name="password">
             이미지<input type="file" multiple="multiple" name="imageFile" >
             물품보관함 이름<input type="text" name="lockerName" placeholder="물품보관함 이름을 적어주세요.">
             물품보관함 주소<input type="text" name="address" placeholder="물품보관함 주소 적어주세요.">
             물품보관함 위치<input type="text" name="location" placeholder="물품보관함 상세위치를 적어주세요">
             보관 가격<input type="text" name="price" placeholder="물품보관함 이용료를 적어주세요">
-            보관함 수<input type="text" name="numberOf" placeholder="물품보관함 개수를 적어주세요">
+            보관함 수 (숫자만 입력해주세요)<input type="text" name="numberOf" placeholder="물품보관함 개수를 적어주세요">
             <input type="submit"/>
         </form>
     </div>

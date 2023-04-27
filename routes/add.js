@@ -1,6 +1,7 @@
 import express from 'express';
-import Locker from '../models/lockers.js'
+import Locker from '../models/lockers.js';
 import alertMove from '../js/util/alertMove.js';
+import bcrypt from 'bcrypt';
 import { getCoord } from '../js/coord.js';
 const router = express.Router();
 
@@ -27,6 +28,7 @@ async (req,res)=>{
         let lockerAddress = await Locker.findOne({address});
         let lockername = await Locker.findOne({stationName: lockerName});
 
+
         if (lockerAddress) {
             return res
               .status(400)
@@ -38,13 +40,16 @@ async (req,res)=>{
             .send(alertMove("/routes/add","중복된 보관함이름 입니다."))
         }
         let lastId = await Locker.findOne({},{id:1, _id:0}).sort({id:-1}).limit(1);
-          
+        
+        const salt = await bcrypt.genSalt(10);
+        let userPassword = await bcrypt.hash(password, salt);
+
         await getCoord(lockerName).then(x=>{
             let locker = new Locker({ 
                 id: lastId.id+1,
                 stationName: lockerName,
                 userName, 
-                password, 
+                password: userPassword, 
                 address, 
                 location, 
                 price, 

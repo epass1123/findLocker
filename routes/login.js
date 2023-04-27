@@ -9,6 +9,7 @@ router.get(
   "/",
     async(req, res)=>{
       if(req.session.user){
+        console.log(req.session.user);
         return res
           .send(alertMove("/","이미 로그인 되어있습니다."))
       }

@@ -17,6 +17,8 @@ import logoutRouter from "./routes/logout.js";
 import mypageRouter from "./routes/user/index.js";
 import modifyRouter from "./routes/user/myinfo/modify.js";
 import withdrawlRouter from "./routes/user/myinfo/withdrawl.js";
+import favRouter from "./routes/user/mylocker/favorites.js";
+import mylockerRouter from "./routes/user/mylocker/mylocker.js";
 
 const app = express();
 const __dirname = path.resolve();
@@ -69,6 +71,9 @@ app.use("/routes/logout", logoutRouter);
 app.use("/routes/user/index", mypageRouter);
 app.use("/routes/user/myinfo/modify", modifyRouter);
 app.use("/routes/user/myinfo/withdrawl", withdrawlRouter);
+app.use("/routes/user/mylocker/favorites", favRouter);
+app.use("/routes/user/mylocker/mylocker", mylockerRouter);
+
 
 
 app.get('/',async function(req,res){

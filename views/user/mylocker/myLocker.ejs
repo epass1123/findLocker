@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/../../../css/mypage.css">
+    <title>맡겨줘-내 정보</title>
+</head>
+<body>
+    <div class="header">
+        <a class="navbar" href="/"><img src="/../../../img/logo4.png" alt=""></a>
+        <div class="search">
+            <form onsubmit="searchPlaces(); return false">
+                <div id="search-bar">
+                    <input id="search-input" type="search" placeholder="위치를 검색하세요." value="">
+                    <button id="btn1" type="submit"><img src="/../../../img/001-search.png" alt="Search"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="body">
+        <ul id="menu">
+            <h2>안녕하세요 <%= user.name %>님</h2>
+            <div>
+                <b><a href="../index">내 회원정보</a></b>
+                <li id="userInfo"><a href="modify">회원정보수정</a></li>
+                <li id="withdrawl"><a href="withdrawl">회원탈퇴</a></li>
+            </div>
+            
+            <div>
+                <b>내 보관함</b>
+                <li id="myLocker"><a href="mylocker">내가 등록한 보관함</a></li>
+                <li id="favorites"><a href="favorites">즐겨찾기</a></li>
+            </div>
+        </ul>
+        <div class="container">
+            <h2>내가 등록한 보관함</h2>
+            <form method="post" class="userInfo">
+                <b>아이디</b>
+                <input type="text" name="id" value="<%= user.id %>" required></input>
+                <b>이름</b>
+                <input type="text" name="name" value="<%= user.name %>" required></input>
+                <b>이메일</b>
+                <input type="email" name="email" value="<%= user.email %>" required></input>
+                <b>비밀번호</b>
+                <input type="password" name="password" onchange="chkSame()" required></input>
+                <div id="doubleChk">
+                    <b class="pwChk" style="font-size: large;">비밀번호 확인</b>
+                    <b id="alertChk"></b>
+                </div>
+                <input type="password" name="passwordChk" onchange="chkSame()" required></input>
+                <button type="submit">변경하기</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
