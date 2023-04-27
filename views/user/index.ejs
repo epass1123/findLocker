@@ -26,6 +26,7 @@
             }
             let closePop = function(){
                 document.getElementById("popup").style.display = "none"
+                document.getElementById("passwordInput").value = null;
             }
         </script>
         <ul id="menu">
@@ -33,13 +34,13 @@
             <div>
                 <b><a href="./index">내 회원정보</a></b>
                 <li id="userInfo"><a href="javascript:void(0);" onclick="openPop()">회원정보수정</a></li>
-                <li id="withdrawl"><a href="withdrawl">회원탈퇴</a></li>
+                <li id="withdrawl"><a href="./myinfo/withdrawl">회원탈퇴</a></li>
             </div>
             
             <div>
                 <b>내 보관함</b>
-                <li id="myLocker"><a href="mylocker">내가 등록한 보관함</a></li>
-                <li id="favorites"><a href="favorites">즐겨찾기</a></li>
+                <li id="myLocker"><a href="./mylocker/myLocker">내가 등록한 보관함</a></li>
+                <li id="favorites"><a href="./mylocker/favorites">즐겨찾기</a></li>
             </div>
         </ul>
         <div class="container">

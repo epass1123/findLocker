@@ -15,7 +15,8 @@ import loginRouter from "./routes/login.js"
 import addRouter from "./routes/add.js";
 import logoutRouter from "./routes/logout.js";
 import mypageRouter from "./routes/user/index.js";
-import modifyRouter from "./routes/user/myinfo/modify.js"
+import modifyRouter from "./routes/user/myinfo/modify.js";
+import withdrawlRouter from "./routes/user/myinfo/withdrawl.js";
 
 const app = express();
 const __dirname = path.resolve();
@@ -67,6 +68,7 @@ app.use("/routes/add", addRouter);
 app.use("/routes/logout", logoutRouter);
 app.use("/routes/user/index", mypageRouter);
 app.use("/routes/user/myinfo/modify", modifyRouter);
+app.use("/routes/user/myinfo/withdrawl", withdrawlRouter);
 
 
 app.get('/',async function(req,res){

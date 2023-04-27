@@ -343,7 +343,7 @@ li a {
 @media (min-width: 768px) {
     .map-container {width:70%; height: 100%; float: left; z-index: 0;}
     .controller {float: right; width: 30%; height: 100%;}
-    .header {height: 55px; display: flex; z-index: 2; flex-wrap: wrap;padding: 0px 20px;}
+    .header {height: 55px; display: flex; z-index: 2; flex-wrap: wrap;}
     .header .navbar{position: relative; }
     .header .search{position: relative; left: 0;}
     .header #menu{position: relative; display: flex; margin: 15px 10px 15px auto; background-color: transparent; right: 0; padding: 0px 4px; height: 28px;}

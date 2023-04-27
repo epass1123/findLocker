@@ -97,6 +97,22 @@ a{
     margin: 30px auto;
 }
 
+.container > #withdrawl {
+    margin: 20px auto;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container > #withdrawl > button{
+    margin: 10px auto;
+    width: 50%;
+    border: none;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.3);
+    height: 30px;
+}
+
 .container > .userInfo > input{
     margin-bottom: 20px;
     border-radius: 5px;
@@ -116,7 +132,6 @@ a{
     font-size: 12px;
     margin: 0px 0px 0px 20px;
 }
-
 
 .container > .userInfo > b {
     font-size: large;
@@ -173,6 +188,7 @@ a{
     margin-bottom: 10px;
     height: 20px;
     width: 50%;
+    padding: 0 4px;
     margin: 0 auto;
     border-radius: 4px;
     background-color: #fff;
@@ -283,7 +299,7 @@ li a {
 @media (min-width: 768px) {
     .container {width:70%; height: 100%; float: left; z-index: 0;}
     .controller {float: right; width: 30%; height: 100%;}
-    .header {position: sticky; top: 0; height: 55px; display: flex; z-index: 2; flex-wrap: wrap;padding: 0px 20px;}
+    .header {position: sticky; top: 0; height: 55px; display: flex; z-index: 2; flex-wrap: wrap;}
     .header .navbar{position: relative; }
     .header .search{position: relative; left: 0;}
     #menu{

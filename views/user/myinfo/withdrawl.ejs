@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/../../../css/mypage.css">
+    <title>맡겨줘-내 정보</title>
+</head>
+<body>
+    <div class="header">
+        <a class="navbar" href="/"><img src="/../../../img/logo4.png" alt=""></a>
+        <div class="search">
+            <form onsubmit="searchPlaces(); return false">
+                <div id="search-bar">
+                    <input id="search-input" type="search" placeholder="위치를 검색하세요." value="">
+                    <button id="btn1" type="submit"><img src="/../../../img/001-search.png" alt="Search"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="body">
+        <script>
+            let openPop = function(){
+                document.getElementById("popup").style.display = "block"
+            }
+            let closePop = function(){
+                document.getElementById("popup").style.display = "none"
+                document.getElementById("passwordInput").value = null;
+            }
+        </script>
+        <ul id="menu">
+            <h2>안녕하세요 <%= user.name %>님</h2>
+            <div>
+                <b><a href="../index">내 회원정보</a></b>
+                <!-- 회원정보 수정시 비밀번호 확인을 회원정보 수정페이지에 넣어야겠다 -->
+                <li id="userInfo"><a href="modify">회원정보수정</a></li>
+                <li id="withdrawl"><a href="withdrawl">회원탈퇴</a></li>
+            </div>
+            
+            <div>
+                <b>내 보관함</b>
+                <li id="myLocker"><a href="mylocker">내가 등록한 보관함</a></li>
+                <li id="favorites"><a href="favorites">즐겨찾기</a></li>
+            </div>
+        </ul>
+        <div class="container">
+            <h2>회원 탈퇴</h2>
+            <div id="withdrawl">
+                <p>
+                    <h3>회원탈퇴 시 제 정보는 어떻게 되나요?</h3>
+                    탈퇴 즉시 회원정보와 관련된 모든 정보는 영구적으로 삭제됩니다.<br><br><br>
+
+                    <h3>회원탈퇴 시 등록한 보관함 정보는 어떻게 되나요?</h3>
+                    회원 탈퇴시 회원님이 등록한 인증된 물품보관함의 정보는 잔류됩니다.<br>
+                    또한 회원 탈퇴 후 계정 복구는 불가하오니 주의사항을 확인하시고 탈퇴 신청을 해주시기 바랍니다.
+                </p>
+                <button onclick="openPop()">회원탈퇴하기</button>
+            </div>
+            <div id="popup">
+                <div id="passwordChk">
+                    <h2>회원 탈퇴</h2>
+                    <p>
+                        본인확인을 위해 비밀번호를 입력해주세요.
+                    </p>
+                    <form method="post">
+                        비밀번호 <input id="passwordInput" type="password" name="password">
+                        <button type="submit">회원 탈퇴</button>
+                    </form>
+                    <br>
+                    <button onclick="closePop()">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
