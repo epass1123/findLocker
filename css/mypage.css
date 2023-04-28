@@ -213,6 +213,56 @@ a{
     height: 25px;
     border: none;
 }
+
+/* mylocker */
+.container > #mylocker{
+    display: flex;
+    flex-direction: column;
+    width:90%;
+    margin: 30px auto;
+}
+
+.container > #mylocker > div{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+}
+
+.container > #mylocker > form{
+    padding: 10px 0px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.container > #mylocker > form > div{
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 10px;
+}
+
+.container > #mylocker > #control{
+    padding: 10px 10px;
+    float: right;
+    height: auto;
+    display: flex;
+    border: none!important;
+    margin-left: auto;
+}
+
+.container > #mylocker > #control > button{
+    margin: 0 2px;
+    background:rgba(13, 97, 31, 0.7);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 30px;
+    color:white
+}
+
+.container > #mylocker > form > div > div:nth-child(1){
+    margin-right: 10px;
+}
+
 .search{
     float: right;
     position: fixed;

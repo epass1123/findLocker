@@ -14,11 +14,40 @@
         <div class="container">
             <h2>내가 등록한 보관함</h2>
             <ul id="mylocker">
-               
-                    <% for(let i = 0;i < mylocker.length ;i++) {%>
-                    <li><%= mylocker[i].stationName %></li>
-                    <% } %>
-                
+                <script>
+                    function selectAll(e){
+                        let checkbox = document.getElementsByName('locker');
+                        checkbox.forEach((x) => {
+                            x.checked = e.checked;
+                        })
+                    }
+                </script>
+                <span><%= mylocker.length %>개의 보관함이 있습니다.</span>
+                <div>
+                    <input type="checkbox" id="all" name="locker"  onclick="selectAll(this)">
+                    <b>
+                        전체 선택 
+                    </b>
+                </div>
+                <form method="post" id="lockerlist">
+                <% for(let i = 0;i < mylocker.length ;i++) {%>
+                    <div>
+                        <div>
+                            <input type="checkbox" name="locker" value="<%= mylocker[i].stationName %>">
+                        </div>
+                        <div>
+                            <li><b>보관함 이름:</b> <%= mylocker[i].stationName %></li>
+                            <li><b>보관함 주소:</b> <%= mylocker[i].address %></li>
+                            <li><b>등록자:</b> <%= mylocker[i].userName %></li>
+                        </div>
+                    </div>
+                        
+                        <% } %>
+                </form>
+                <div id="control">
+                    <button type="submit" form="lockerlist">삭제</button>
+                    <button onclick="location.href='/routes/add'">추가하기</button>
+                </div>
             </ul>
         </div>
     </div>

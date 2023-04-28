@@ -13,7 +13,6 @@ router.get('/',
         else{
             let myname = req.session.user.name
             let mylocker = await Locker.find({userName: myname});
-            console.log(mylocker);
             res.render(
                 "user/mylocker/mylocker",
                 {   
@@ -28,11 +27,15 @@ router.get('/',
 router.post('/',
     async (req,res)=>{ 
         if(req.session.user){
-            let _id = req.session.user._id;
-            await User.findByIdAndDelete(_id);
-            req.session.user = undefined;
-            return res
-                .send(alertMove("/","회원탈퇴가 완료되었습니다."))
+            let { locker } = req.body;
+            if(locker){
+                for(let i = 0;i<locker.length;i++){
+                    await Locker.deleteOne({stationName: locker[i]});
+                }
+                return res.
+                    send(alertMove("./mylocker","삭제가 완료되었습니다."))
+            }
+            console.log(locker)
         }
 
     }
