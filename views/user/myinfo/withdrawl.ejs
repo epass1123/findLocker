@@ -8,17 +8,7 @@
     <title>맡겨줘-내 정보</title>
 </head>
 <body>
-    <div class="header">
-        <a class="navbar" href="/"><img src="/../../../img/logo4.png" alt=""></a>
-        <div class="search">
-            <form onsubmit="searchPlaces(); return false">
-                <div id="search-bar">
-                    <input id="search-input" type="search" placeholder="위치를 검색하세요." value="">
-                    <button id="btn1" type="submit"><img src="/../../../img/001-search.png" alt="Search"></button>
-                </div>
-            </form>
-        </div>
-    </div>
+    <%- include("../../header.ejs") %>
     <div id="body">
         <script>
             let openPop = function(){
@@ -29,21 +19,7 @@
                 document.getElementById("passwordInput").value = null;
             }
         </script>
-        <ul id="menu">
-            <h2>안녕하세요 <%= user.name %>님</h2>
-            <div>
-                <b><a href="../index">내 회원정보</a></b>
-                <!-- 회원정보 수정시 비밀번호 확인을 회원정보 수정페이지에 넣어야겠다 -->
-                <li id="userInfo"><a href="modify">회원정보수정</a></li>
-                <li id="withdrawl"><a href="withdrawl">회원탈퇴</a></li>
-            </div>
-            
-            <div>
-                <b>내 보관함</b>
-                <li id="myLocker"><a href="mylocker">내가 등록한 보관함</a></li>
-                <li id="favorites"><a href="favorites">즐겨찾기</a></li>
-            </div>
-        </ul>
+        <%- include("../menu.ejs") %>
         <div class="container">
             <h2>회원 탈퇴</h2>
             <div id="withdrawl">

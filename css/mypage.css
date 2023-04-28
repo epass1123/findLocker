@@ -81,6 +81,8 @@ a{
     text-align: center;
 }
 
+
+/* mainpage */
 .container > .userInfo {
     font-size: medium;
     display: flex;
@@ -97,6 +99,8 @@ a{
     margin: 30px auto;
 }
 
+
+/* withdrawl.ejs */
 .container > #withdrawl {
     margin: 20px auto;
     width: 500px;
@@ -113,6 +117,7 @@ a{
     height: 30px;
 }
 
+/* modifypage */
 .container > .userInfo > input{
     margin-bottom: 20px;
     border-radius: 5px;
