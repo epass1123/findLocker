@@ -4,6 +4,8 @@ import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import path from 'path'
 import Locker from './models/lockers.js'
+import User from './models/users.js';
+
 
 import expressSession from "express-session"
 import MemoryStore from "memorystore"
@@ -104,5 +106,15 @@ app.get('/',async function(req,res){
     })
 }
 });
+let favorites = []
+app.post('/',async (req,res)=>{
+    if(req.session.user){
+        const {checkbox} = req.body
+        favorites.push(checkbox)
+        await User.findOneAndUpdate({id:req.session.user.id},{favorites:favorites});
+        console.log(checkbox)
+    }
+    
+})
 
 app.listen(process.env.PORT, ()=>console.log("서버 open"))

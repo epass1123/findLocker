@@ -20,6 +20,9 @@ const userSchema = new mongoose.Schema({
     authority:{
         type:String,
         default:"일반"
+    },
+    favorites:{
+        type:Array,
     }
 });
 

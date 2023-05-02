@@ -23,6 +23,7 @@ var markerSize = new kakao.maps.Size(MARKER_WIDTH, MARKER_HEIGHT),
       
 //ejs로 부터 받아온 마커
 var lockerList = _list;
+let _user = user
 
 var search = document.getElementById('btn1')
 search.onclick = searchPlaces;
@@ -243,8 +244,17 @@ function showList(){
         var marker = null;
         var el = document.createElement('li');
         var button = document.createElement('button');
-        button.innerText = "길찾기"
-        button.className = "findWay"
+        var input = document.createElement('input');
+        var form = document.createElement('form');
+
+        button.innerText = "길찾기";
+        button.className = "findWay";
+        input.className = "favorite";
+        input.type = "checkbox";
+        input.name = "checkbox"
+        input.value = x.id
+        form.method = "post";
+
         button.onclick = function(){
             geocoder.coord2Address(center.getLng(),center.getLat(),function(res,status){
                 if(status === kakao.maps.services.Status.OK){
@@ -252,6 +262,13 @@ function showList(){
                     window.open(`https://map.kakao.com/?sName=${center}&eName=${x.title}`)
                 }
             })
+        }
+
+        input.onchange = function(e){
+            console.log(e.target.checked)
+            if(e.target.checked === true){
+                form.submit();
+            }
         }
 
         if(x.title){
@@ -269,17 +286,24 @@ function showList(){
                     el.style.backgroundColor = 'gainsboro'
                 }
                 el.appendChild(button)
+                if(_user){
+                    form.appendChild(input)
+                    el.appendChild(form);
+                }
             };
             //onmouseout을 사용하면 자식요소에서도 작동해서 버튼에 마우스 올리면 버튼이 사라짐.
-            el.onmouseleave = function(e){
+            el.onmouseleave = function(){
                 if(!selectedItem || selectedItem !== el){
                     el.style.backgroundColor = 'white'
                 }
                 if(button){
                     button.remove();
                 }
+                if(form){
+                    form.remove();
+                }
             }
-            el.onclick = function(e){
+            el.onclick = function(){
                 if(!selectedItem || selectedItem !== el){
                     
                     if(!!selectedItem){
