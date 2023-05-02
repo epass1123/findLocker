@@ -29,11 +29,18 @@ router.post('/',
         if(req.session.user){
             let { locker } = req.body;
             if(locker){
-                for(let i = 0;i<locker.length;i++){
-                    await Locker.deleteOne({stationName: locker[i]});
+                if(typeof locker === "string"){
+                    await Locker.deleteOne({stationName: locker});
+                    return res.
+                        send(alertMove("./mylocker","삭제가 완료되었습니다."))
+                } 
+                else{
+                    for(let i = 0;i<locker.length;i++){
+                        await Locker.deleteOne({stationName: locker[i]});
+                    }
+                    return res.
+                        send(alertMove("./mylocker","삭제가 완료되었습니다."))
                 }
-                return res.
-                    send(alertMove("./mylocker","삭제가 완료되었습니다."))
             }
             console.log(locker)
         }
