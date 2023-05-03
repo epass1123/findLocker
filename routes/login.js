@@ -36,6 +36,7 @@ router.post(
           if(check){
             // const token = jwt.sign({userId: user._id}, 'secretToken');
             req.session.user = user
+            console.log(req.session)
             return res.redirect(req.session.prevPage)
             
           }else{

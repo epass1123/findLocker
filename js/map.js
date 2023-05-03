@@ -24,6 +24,7 @@ var markerSize = new kakao.maps.Size(MARKER_WIDTH, MARKER_HEIGHT),
 //ejs로 부터 받아온 마커
 var lockerList = _list;
 let _user = user
+let _fav = fav
 
 var search = document.getElementById('btn1')
 search.onclick = searchPlaces;
@@ -245,15 +246,23 @@ function showList(){
         var el = document.createElement('li');
         var button = document.createElement('button');
         var input = document.createElement('input');
+        var inputValue = document.createElement('input');
         var form = document.createElement('form');
 
         button.innerText = "길찾기";
         button.className = "findWay";
+
         input.className = "favorite";
         input.type = "checkbox";
-        input.name = "checkbox"
-        input.value = x.id
+        input.name = "checkbox";
+
         form.method = "post";
+
+        inputValue.type = "inpValue";
+        inputValue.name = "inpValue";
+        inputValue.value = x.id;
+        inputValue.readOnly = true;
+        inputValue.style.display = "none"
 
         button.onclick = function(){
             geocoder.coord2Address(center.getLng(),center.getLat(),function(res,status){
@@ -265,10 +274,7 @@ function showList(){
         }
 
         input.onchange = function(e){
-            console.log(e.target.checked)
-            if(e.target.checked === true){
-                form.submit();
-            }
+            form.submit();
         }
 
         if(x.title){
@@ -287,7 +293,13 @@ function showList(){
                 }
                 el.appendChild(button)
                 if(_user){
+                    if(_fav){
+                       if(_fav.includes(inputValue.value)){
+                            input.checked = true;
+                       }
+                    }
                     form.appendChild(input)
+                    form.appendChild(inputValue)
                     el.appendChild(form);
                 }
             };

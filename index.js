@@ -6,11 +6,11 @@ import path from 'path'
 import Locker from './models/lockers.js'
 import User from './models/users.js';
 
-
 import expressSession from "express-session"
 import MemoryStore from "memorystore"
 const memorystore = MemoryStore(expressSession);
 
+import indexRouter from "./routes/index.js"
 import lockerRouter from "./routes/locker.js"
 import registerRouter from "./routes/register.js"
 import loginRouter from "./routes/login.js"
@@ -65,6 +65,7 @@ mongoose.connect(
 });
 
 //미들웨어
+app.use("/", indexRouter);
 app.use("/routes/locker", lockerRouter);
 app.use("/routes/register", registerRouter);
 app.use("/routes/login", loginRouter);
@@ -75,46 +76,5 @@ app.use("/routes/user/myinfo/modify", modifyRouter);
 app.use("/routes/user/myinfo/withdrawl", withdrawlRouter);
 app.use("/routes/user/mylocker/favorites", favRouter);
 app.use("/routes/user/mylocker/mylocker", mylockerRouter);
-
-
-
-app.get('/',async function(req,res){
-    let list = await Locker.find({});
-    if(req.session.user){
-        const auth = req.session.user.authority 
-        if(auth === "관리자"){
-            res.render('index',{
-                user: req.session.user,
-                appkey: process.env.APPKEY,
-                list: list,
-                manager: true,
-            })
-        }
-        else{res.render('index',{
-            user: req.session.user,
-            appkey: process.env.APPKEY,
-            list: list,
-            manager: false,
-        })
-        }
-    }
-    else{
-        res.render('index',{
-            user: null,
-            appkey: process.env.APPKEY,
-            list: list
-    })
-}
-});
-let favorites = []
-app.post('/',async (req,res)=>{
-    if(req.session.user){
-        const {checkbox} = req.body
-        favorites.push(checkbox)
-        await User.findOneAndUpdate({id:req.session.user.id},{favorites:favorites});
-        console.log(checkbox)
-    }
-    
-})
 
 app.listen(process.env.PORT, ()=>console.log("서버 open"))
