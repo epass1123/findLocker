@@ -24,7 +24,17 @@ var markerSize = new kakao.maps.Size(MARKER_WIDTH, MARKER_HEIGHT),
 //ejs로 부터 받아온 마커
 var lockerList = _list;
 let _user = user
-let _fav = fav
+let fav = _fav
+
+if(localStorage.getItem("fav") !== null){
+    console.log(localStorage.getItem("fav"))
+    fav = localStorage.getItem("fav")
+    console.log(fav)
+    localStorage.setItem("fav", fav);
+}
+else{
+    localStorage.setItem("fav", JSON.stringify(fav));
+}
 
 var search = document.getElementById('btn1')
 search.onclick = searchPlaces;
@@ -217,6 +227,10 @@ function makeClickListener(map, marker, infowindow, clickImage){
     };
 }
 
+if(!_user){
+    localStorage.clear();
+}
+
 function showList(){
     var list = lockerList
     var center = map.getCenter();
@@ -240,7 +254,7 @@ function showList(){
     list = list.sort((a,b)=>{
         return a.distance - b.distance
     })
-    
+
     list.forEach(x=>{
         var marker = null;
         var el = document.createElement('li');
@@ -274,6 +288,17 @@ function showList(){
         }
 
         input.onchange = function(e){
+            if(fav){
+                console.log(input.checked)
+                if(input.checked && !fav.includes(inputValue.value)){
+                    fav.push(inputValue.value)
+                }
+                else if(!input.checked && fav.includes(inputValue.value)){
+                    fav.splice(fav.indexOf(inputValue.value),1);
+                }
+            }
+            
+            localStorage.setItem("fav", fav);
             form.submit();
         }
 
@@ -293,9 +318,15 @@ function showList(){
                 }
                 el.appendChild(button)
                 if(_user){
-                    if(_fav){
-                       if(_fav.includes(inputValue.value)){
+                let storage = localStorage.getItem("fav")
+                    if(storage){
+                        console.log(storage)
+                        console.log(inputValue.value)
+                       if(storage.includes(inputValue.value)){
                             input.checked = true;
+                       }
+                       else{
+                        input.checked = false;
                        }
                     }
                     form.appendChild(input)

@@ -37,28 +37,26 @@ router.get('/',async function(req,res){
 }
 });
 
-//체크풀렸을때 지우기
-
 router.post('/',async (req,res)=>{
     if(req.session.user){
         let favorites = await User.findOne({id:req.session.user.id}, 'favorites');
         favorites = favorites.favorites;
         const {checkbox, inpValue} = req.body
-        console.log("즐겨찾기" + favorites)
         if(!checkbox){
             if(favorites.includes(inpValue)){
                 favorites.splice(favorites.indexOf(inpValue), 1);
+                req.session.user.favorites = favorites
             }
             await User.findOneAndUpdate({id:req.session.user.id},{favorites:favorites});
+            
         }
         else{
             if(!favorites.includes(inpValue)){
                 favorites.push(inpValue)
+                req.session.user.favorites = favorites
                 await User.findOneAndUpdate({id:req.session.user.id},{favorites:favorites});
             }
         }
-        console.log("즐겨찾기 추가후" + favorites)
-
     }
     
 })
