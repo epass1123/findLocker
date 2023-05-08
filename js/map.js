@@ -27,12 +27,13 @@ let _user = user
 let fav = _fav
 
 if(localStorage.getItem("fav") !== null){
-    console.log(localStorage.getItem("fav"))
-    fav = localStorage.getItem("fav")
-    console.log(fav)
-    localStorage.setItem("fav", fav);
+    console.log("로컬스토리지 존재함: ", localStorage.getItem("fav"));
+    fav = JSON.parse(localStorage.getItem("fav"));
+    console.log("fav: ", fav);
+    localStorage.setItem("fav", JSON.stringify(fav));
 }
 else{
+    console.log("초기 fav:",fav)
     localStorage.setItem("fav", JSON.stringify(fav));
 }
 
@@ -294,11 +295,12 @@ function showList(){
                     fav.push(inputValue.value)
                 }
                 else if(!input.checked && fav.includes(inputValue.value)){
+                    console.log("fav:",fav)
                     fav.splice(fav.indexOf(inputValue.value),1);
                 }
             }
-            
-            localStorage.setItem("fav", fav);
+
+            localStorage.setItem("fav", JSON.stringify(fav));
             form.submit();
         }
 
