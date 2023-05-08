@@ -38,9 +38,9 @@
                 <% for(let i = 0;i < mylocker.length ;i++) {%>
                     <div>
                         <div>
-                            <input type="checkbox" name="locker" id="lockerChk" value="<%= mylocker[i].stationName %>">
+                            <input type="checkbox" name="locker" id="lockerChk<%=i%>" value="<%= mylocker[i].stationName %>">
                         </div>
-                        <label for="lockerChk">
+                        <label for="lockerChk<%=i%>">
                             <div>
                                 <li><b>보관함 이름:</b> <%= mylocker[i].stationName %></li>
                                 <li><b>보관함 주소:</b> <%= mylocker[i].address %></li>
