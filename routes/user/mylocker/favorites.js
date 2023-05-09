@@ -11,22 +11,13 @@ router.get('/',
                 send(alertMove("/routes/login","로그인이 필요합니다."))
         }
         else{
-            let arr = []
-            let fav = req.session.user.favorites
-            fav.sort();
-            for(let i = 0;i<fav.length;i++){
-                arr.push(await Locker.find(
-                    {
-                        id: Number(fav[i])
-                    }
-                ));
-
-            }
+            let list = await Locker.find({})
+            
             res.render(
                 "user/mylocker/favorites",
                 {
                     user: req.session.user,
-                    arr
+                    list
                 }
             )    
         }
@@ -40,26 +31,36 @@ async (req,res)=>{
         let _id = req.session.user._id
         let fav = req.session.user.favorites
         if(locker){
-            locker.forEach(e=>{
-                fav.splice(fav.indexOf(e),1)
-            })
+            if(typeof locker === "string"){
+                fav.splice(fav.indexOf(locker),1);
 
-            console.log("fav:", fav);
-            await User.updateMany({_id:_id},
-                {
-                    $set:{
-                        favorites : fav,
+                await User.updateMany({_id:_id},
+                    {
+                        $set:{
+                            favorites : fav,
+                        }
                     }
-                }
-            );
-
+                );
+            }
+            else{
+                locker.forEach(e=>{
+                    fav.splice(fav.indexOf(e),1)
+                })
+    
+                await User.updateMany({_id:_id},
+                    {
+                        $set:{
+                            favorites : fav,
+                        }
+                    }
+                );
+            }
             req.session.user.favorites = fav;
-            return res.
-                send(alertMove("./favorites","삭제가 완료되었습니다."))            
-        }
-        console.log(locker)
-    }
+                return res.
+                    send(alertMove("./favorites","삭제가 완료되었습니다."))            
 
+        }
+    }
 }
 )
 

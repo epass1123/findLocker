@@ -6,59 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/../../../css/mypage.css">
     <title>맡겨줘-내 정보</title>
+
 </head>
 <body>
     <%-include("../../header.ejs")%>
     <div id="body">
         <%- include("../menu.ejs") %>
         <div class="container">
+            
             <h2>즐겨찾는 보관함</h2>
             <ul id="mylocker">
                 <script>
-                    function selectAll(e){
-                        let checkbox = document.getElementsByName('locker');
-                        checkbox.forEach((x) => {
-                            x.checked = e.checked;
-                        })
-                    }
+                    let _list =  "<%=JSON.stringify(list)%>";
+                    _list = _list.replaceAll('&#34;','\"');
+                    _list = JSON.parse(_list);
                 </script>
-                <span><%= user.favorites.length %>개의 즐겨찾는 보관함</span>
                 <div>
                     <input type="checkbox" id="all" name="locker"  onclick="selectAll(this)">
                     <b>
                         전체 선택 
                     </b>
                 </div>
-                <form method="post" id="lockerlist">
-                <% if(!user.favorites.length){%>
-                    <div>
-                        <div>즐겨찾는 보관함을 추가해보세요!</div>
-                    </div>    
-                <% } %>
-                <% for(let i = 0;i < user.favorites.length ;i++) {%>
-                    <div>
-                        <div>
-                            <input type="checkbox" name="locker" id="lockerChk<%=i%>" value="<%=arr[i][0].id%>">
-                        </div>
-                        <label for="lockerChk<%=i%>">
-                            <div>
-                                <li><b>보관함 이름:</b> <%=arr[i][0].stationName%></li>
-                                <li><b>보관함 주소:</b> <%=arr[i][0].address%></li>
-                                <li><b>보관함 위치:</b> <%=arr[i][0].location%></li>
-                                <li><b>보관함 가격:</b> <%=arr[i][0].price%></li>
-                            </div>    
-                        </label>
-                    </div>
-                        
-                        <% } %>
+                <form method="post" name="" id="lockerlist">
+                    
                 </form>
                 <div id="control">
-                    <button type="submit" form="lockerlist">삭제</button>
+                    <button type="submit" form="lockerlist" onclick="saveLocal()">삭제</button>
                     <button onclick="location.href='/'">추가하기</button>
                 </div>
             </ul>
         </div>
     </div>
+    <script type="text/javascript" src="../../../js/favorites.js"></script>
 
 </body>
 </html>
