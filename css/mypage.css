@@ -59,6 +59,109 @@ a{
     border-radius: 3px;
 }
 
+.header > #menu{
+    position: fixed;
+    z-index: 1;
+    padding: 60px 20px 20px 20px;
+    transition: all 400ms;
+    width: 20%;
+    right: -300px;
+    top: 0px;
+    height: 90%;
+    background-color: rgba(154, 210, 232, 0.8);
+    margin-top: 0;
+}
+
+.header #menu li a{
+    color: #fff;
+}
+
+#welcome{
+    display: inline-block;
+    position: relative;
+}
+
+#welcome:not(#menu):hover a{
+    background-color: transparent;
+    border: none;
+}
+
+#welcome:hover > #userMenu{
+    display: block;
+    background-color: transparent;
+}
+
+#userMenu{
+    width: 100%;
+    display: none;
+    position: absolute;
+    z-index: 2;
+}
+
+#userMenu li{
+    display: block;
+}
+
+#userMenu:not(#menu) li a{
+    text-align: center;
+}
+
+#hamburger{
+    display: none;
+}
+
+#hamburger + label{
+    z-index: 2;
+    position: fixed;
+    top: 10px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    display: block;
+    cursor: pointer;
+}
+
+#hamburger + label>span{
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    display: block;
+    background: black;
+    border-radius: 5px;
+    transition: all 400ms;
+}
+
+#hamburger:checked + label>span:nth-child(1){
+    top:50%;
+    transform: translate(0, -50%);
+    transform: rotate(45deg);
+}
+
+#hamburger + label>span:nth-child(2){
+    top:50%;
+    transform: translate(0, -50%);
+}
+
+#hamburger:checked + label>span:nth-child(2){
+    display: none;
+}
+
+#hamburger + label>span:nth-child(3){
+    bottom: 0;
+}
+
+#hamburger:checked + label > span:nth-child(3) {
+    top: 50%;
+    transform: translate(0, -50%);
+    transform: rotate(-45deg);
+  }
+
+#hamburger:checked + label +#menu{
+    display: block;
+    right: 0px;
+}
+
+
 #btn1 {
     background: transparent;
     border: transparent;
@@ -355,6 +458,7 @@ li a {
     .container {width:70%; height: 100%; float: left; z-index: 0;}
     .controller {float: right; width: 30%; height: 100%;}
     .header {position: sticky; top: 0; height: 55px; display: flex; z-index: 2; flex-wrap: wrap;}
+    .header #menu{position: relative; display: flex; margin: 15px 10px 15px auto; background-color: transparent; right: 0; padding: 0px 4px; height: 28px;}
     .header .navbar{position: relative; }
     .header .search{position: relative; left: 0;}
     #menu{
@@ -368,6 +472,22 @@ li a {
         margin-top: 100px;
     }
     #menu li a{padding: 5px 5px;}
+    #welcome{
+        width: 70%;
+        margin: 0px 0px 0px auto;
+    }
+    #welcome:hover > #userMenu{
+        display: block;
+        background-color: darkseagreen;
+        border-radius: 3px;
+        opacity: 0.9;
+    }
+    #welcome:not(#menu):hover a{
+        background-color: transparent;
+        border: none;
+    }
+    #hamburger:checked + label +#menu {display: flex;}
+    #hamburger + label{display: none;}
     #body {flex-direction: row; height: 90%;}
     #ul1{height: 50px;}
 }

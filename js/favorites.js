@@ -33,9 +33,7 @@ function saveLocal(){
                 arr.push(x);
             }
         }
-
     })
-
 
     if(!fav.length){
         div.innerHTML = `즐겨찾기는 보관함을 추가해보세요!`
@@ -54,7 +52,8 @@ function saveLocal(){
                         <div>
                             <li><b>보관함 이름:</b> ${arr[i].stationName}</li>
                             <li><b>보관함 주소:</b> ${arr[i].address}</li>
-                            <li><b>등록자:</b> ${arr[i].userName}</li>
+                            <li><b>보관함 위치:</b> ${arr[i].location}</li>
+                            <li><b>보관함 가격:</b> ${arr[i].price}</li>
                         </div>    
                     </label>
                     </div>`

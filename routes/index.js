@@ -7,25 +7,13 @@ const router = express.Router();
 router.get('/',async function(req,res){
     let list = await Locker.find({});
     if(req.session.user){
-        const auth = req.session.user.authority;
         const fav = req.session.user.favorites;
-        if(auth === "관리자"){
-            res.render('index',{
-                user: req.session.user,
-                appkey: process.env.APPKEY,
-                list: list,
-                fav: fav,
-                manager: true,
-            })
-        }
-        else{res.render('index',{
+        res.render('index',{
             user: req.session.user,
             appkey: process.env.APPKEY,
             list: list,
             fav: fav,
-            manager: false,
         })
-        }
     }
     else{
         res.render('index',{
