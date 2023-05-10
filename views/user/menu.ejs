@@ -2,7 +2,7 @@
     <h2>안녕하세요 <%= user.name %>님</h2>
     <div>
         <b><a href="/routes/user/index">내 회원정보</a></b>
-        <li id="userInfo"><a href="javascript:void(0);" onclick="openPop()">회원정보수정</a></li>
+        <li id="userInfo"><a href="/routes/user/myinfo/modify">회원정보수정</a></li>
         <li id="withdrawl"><a href="/routes/user/myinfo/withdrawl">회원탈퇴</a></li>
     </div>
     
@@ -11,4 +11,13 @@
         <li id="myLocker"><a href="/routes/user/mylocker/myLocker">내가 등록한 보관함</a></li>
         <li id="favorites"><a href="/routes/user/mylocker/favorites">즐겨찾기</a></li>
     </div>
+    <script>
+        let openPop = function(){
+            document.getElementById("popup").style.display = "block"
+        }
+        let closePop = function(){
+            document.getElementById("popup").style.display = "none"
+            document.getElementById("passwordInput").value = null;
+        }
+    </script>
 </ul>

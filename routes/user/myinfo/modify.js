@@ -47,7 +47,7 @@ router.post('/',
                         send(alertMove("../index","회원정보 수정 완료"))
                     }
                 else{
-                    console.log("비밀번호다름")
+                    return res.send(alertMove("./modify","비밀번호가 일치하지 않습니다."))
                 }
                     
             }

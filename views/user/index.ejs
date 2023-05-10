@@ -10,15 +10,6 @@
 <body>
     <%- include("../header.ejs") %>
     <div id="body">
-        <script>
-            let openPop = function(){
-                document.getElementById("popup").style.display = "block"
-            }
-            let closePop = function(){
-                document.getElementById("popup").style.display = "none"
-                document.getElementById("passwordInput").value = null;
-            }
-        </script>
         <%- include('menu.ejs') %>
         <div class="container">
             <h2>내 회원정보</h2>
@@ -31,7 +22,7 @@
                 <li><%= user.email %></li>
                 <button id="modiButton" onclick="openPop()">회원정보 수정하기</button>
             </ul>
-            <div id="popup">
+            <!-- <div id="popup">
                 <div id="passwordChk">
                     <h2>회원정보 수정</h2>
                     <p>
@@ -44,7 +35,7 @@
                     <br>
                     <button onclick="closePop()">닫기</button>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
