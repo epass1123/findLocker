@@ -8,12 +8,7 @@
             </div>
         </form>
     </div>
-    <input type="checkbox" id="hamburger">
-        <label for="hamburger">
-            <span></span>    
-            <span></span>    
-            <span></span>
-        </label>
+        <%-include("./hamburger.ejs")%>
         <ul id="menu">
             <% if(user !== null){ %>
                     <li id="welcome">
@@ -29,24 +24,9 @@
                         </ul>
                     </li>
             <%}else{%>
-                <li id="login"><a href="routes/login">로그인</a></li>
-                <li id="register"><a href="routes/register">회원가입</a></li>
+                <li id="login"><a href="/routes/login">로그인</a></li>
+                <li id="register"><a href="/routes/register">회원가입</a></li>
             <%}%>
         </ul>
-        <script>
-            let menu = document.getElementById("menu")
-            let hamburger = document.getElementById("hamburger");
-            let label = document.querySelector('label[for="hamburger"]')
-            document.addEventListener('click',(e)=>{
-                const target = e.target;
-                if(target === hamburger || hamburger.contains(target)){
-                    e.preventDefault();
-                }
-                else if(target === label || label.contains(target)){
-                    hamburger.checked = !hamburger.checked
-                }else if(!menu.contains(target)){
-                    hamburger.checked = false;
-                }
-            })
-        </script>
+        <script type="text/javascript" src="../js/hamburger.js"></script>
 </div>

@@ -9,58 +9,7 @@
     <title>맡겨줘</title>
 </head>
 <body>
-    <div class="header">
-        <a class="navbar" href="/"><img src="img/logo4.png" alt=""></a>
-        <div class="search">
-            <form onsubmit="searchPlaces(); return false">
-                <div id="search-bar">
-                    <input id="search-input" type="search" placeholder="위치를 검색하세요." value="">
-                    <button id="btn1" type="submit"><img src="img/001-search.png" alt="Search"></button>
-                </div>
-            </form>
-        </div>
-        <input type="checkbox" id="hamburger">
-        <label for="hamburger">
-            <span></span>    
-            <span></span>    
-            <span></span>
-        </label>
-        <ul id="menu">
-            <% if(user !== null){ %>
-                    <li id="welcome">
-                        <a href="./routes/user/index"><%=user.name%>님</a>
-                        <ul id="userMenu">
-                            <li><a href="routes/user/index">내 정보</a></li>
-                            <li><a href="routes/add">추가하기</a></li>
-                            <%if(user.authority === "관리자"){%>
-                                <li><a href="routes/manage">관리</a></li>
-                            <%}%>
-                            <li><a href="routes/logout">로그아웃</a></li>
-                            
-                        </ul>
-                    </li>
-            <%}else{%>
-                <li id="login"><a href="routes/login">로그인</a></li>
-                <li id="register"><a href="routes/register">회원가입</a></li>
-            <%}%>
-        </ul>
-        <script>
-            let menu = document.getElementById("menu")
-            let hamburger = document.getElementById("hamburger");
-            let label = document.querySelector('label[for="hamburger"]')
-            document.addEventListener('click',(e)=>{
-                const target = e.target;
-                if(target === hamburger || hamburger.contains(target)){
-                    e.preventDefault();
-                }
-                else if(target === label || label.contains(target)){
-                    hamburger.checked = !hamburger.checked
-                }else if(!menu.contains(target)){
-                    hamburger.checked = false;
-                }
-            })
-        </script>
-    </div>
+    <%- include("./header.ejs") %>
     <div id="body">
         <div class="map-container">
             <div id="map"></div>
