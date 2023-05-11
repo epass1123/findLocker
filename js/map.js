@@ -26,15 +26,18 @@ var lockerList = _list;
 let _user = user
 let fav = _fav
 
-if(localStorage.getItem("fav") !== null){
-    console.log("로컬스토리지 존재함: ", localStorage.getItem("fav"));
-    fav = JSON.parse(localStorage.getItem("fav"));
-    console.log("fav: ", fav);
-    localStorage.setItem("fav", JSON.stringify(fav));
-}
-else{
-    console.log("초기 fav:",fav)
-    localStorage.setItem("fav", JSON.stringify(fav));
+if(_user){
+    if(localStorage.getItem("fav") !== null){
+        console.log("로컬스토리지 존재함: ", localStorage.getItem("fav"));
+        fav = JSON.parse(localStorage.getItem("fav"));
+        console.log("fav: ", fav);
+        localStorage.setItem("fav", JSON.stringify(fav));
+    }
+    else{
+        console.log("초기 fav:",fav)
+        localStorage.setItem("fav", JSON.stringify(fav));
+        localStorage.setItem("ID", JSON.stringify(_user.id))
+    }
 }
 
 var search = document.getElementById('btn1')

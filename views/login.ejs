@@ -21,12 +21,12 @@
                     <input type="checkbox" id="register">회원가입
                 </label>
             </div>
-            <input type="submit" value="Login">
+            <input type="submit" value="Login" onclick="chkUser()">
         </form>
         <script>
             function chkUser(){
                 let user = document.getElementsByName("id").value();
-                if(user){
+                if(localStorage.length !== 0 && user){
                     if(localStorage.getItem("ID") !== user){
                         localStorage.clear();
                     }

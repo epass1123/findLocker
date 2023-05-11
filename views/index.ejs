@@ -26,9 +26,8 @@
                 user = user.replaceAll('&#34;','\"');
                 user = JSON.parse(user);
 
-                if(user){
-                   var _fav = user.favorites;
-                }
+                var _fav = user?user.favorites:null;
+                
             </script>
         <script type="text/javascript" src="js/map.js"></script>
         </div>
