@@ -8,7 +8,7 @@
     <title>맡겨줘-내 정보</title>
 </head>
 <body>
-    <%- include("../header.ejs") %>
+    <%- include("../common/header.ejs") %>
     <div id="body">
         <%- include('menu.ejs') %>
         <div class="container">
@@ -22,20 +22,6 @@
                 <li><%= user.email %></li>
                 <button id="modiButton" onclick="openPop()">회원정보 수정하기</button>
             </ul>
-            <!-- <div id="popup">
-                <div id="passwordChk">
-                    <h2>회원정보 수정</h2>
-                    <p>
-                        본인확인을 위해 비밀번호를 입력해주세요.
-                    </p>
-                    <form method="post">
-                        비밀번호 <input type="password" name="password">
-                        <button type="submit">확인</button>
-                    </form>
-                    <br>
-                    <button onclick="closePop()">닫기</button>
-                </div>
-            </div> -->
         </div>
     </div>
 

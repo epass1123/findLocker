@@ -21,7 +21,7 @@ OVER_MARKER_HEIGHT = 35; // 오버 마커의 높이
 var markerSize = new kakao.maps.Size(MARKER_WIDTH, MARKER_HEIGHT),
     overMarkerSize = new kakao.maps.Size(OVER_MARKER_WIDTH, OVER_MARKER_HEIGHT)
       
-//ejs로 부터 받아온 마커
+//ejs로 부터 받아온 변수
 var lockerList = _list;
 let _user = user
 let fav = _fav

@@ -7,19 +7,16 @@ const router = express.Router();
 router.get('/',async function(req,res){
     let list = await Locker.find({});
     if(req.session.user){
-        const fav = req.session.user.favorites;
         res.render('index',{
             user: req.session.user,
             appkey: process.env.APPKEY,
             list: list,
-            fav: fav,
         })
     }
     else{
         res.render('index',{
             user: null,
             appkey: process.env.APPKEY,
-            fav: null,
             list: list
     })
 }

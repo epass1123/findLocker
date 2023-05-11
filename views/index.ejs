@@ -9,7 +9,7 @@
     <title>맡겨줘</title>
 </head>
 <body>
-    <%- include("./header.ejs") %>
+    <%- include("./common/header.ejs") %>
     <div id="body">
         <div class="map-container">
             <div id="map"></div>
@@ -22,12 +22,13 @@
                 _list = _list.replaceAll('&#34;','\"');
                 _list = JSON.parse(_list);
 
-                let user = "<%=user%>"
+                var user = "<%=JSON.stringify(user)%>"
+                user = user.replaceAll('&#34;','\"');
+                user = JSON.parse(user);
 
-                let _fav = "<%=JSON.stringify(fav)%>"
-                _fav = _fav.replaceAll('&#34;','\"');
-                _fav = JSON.parse(_fav);
-
+                if(user){
+                   var _fav = user.favorites;
+                }
             </script>
         <script type="text/javascript" src="js/map.js"></script>
         </div>

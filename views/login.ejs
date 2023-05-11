@@ -23,6 +23,16 @@
             </div>
             <input type="submit" value="Login">
         </form>
+        <script>
+            function chkUser(){
+                let user = document.getElementsByName("id").value();
+                if(user){
+                    if(localStorage.getItem("ID") !== user){
+                        localStorage.clear();
+                    }
+                }
+            }
+        </script>
     </div>
 </body>
 </html>
