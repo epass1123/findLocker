@@ -86,7 +86,7 @@ function removeMarker() {
     markers = [];
 }
 
-function currentLocation() {
+function currentLocation() {    
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(function(position){
             var lat = position.coords.latitude,
@@ -155,6 +155,8 @@ function displayLocker(){
         overImage = createMarkerImage(overMarkerSize, overImageSrc),
         clickImage = createMarkerImage(markerSize, clickImageSrc);
 
+    showList();
+
     for (var i = 0; i < lockerList.length; i ++) {
 
         // 마커를 생성합니다
@@ -163,9 +165,7 @@ function displayLocker(){
             position: new kakao.maps.LatLng(lockerList[i].latitude,lockerList[i].longitude), // 마커를 표시할 위치
             image : normalImage // 마커 이미지 
         });
-    
-        showList();
-        
+            
         marker.normalImage = normalImage;
 
         var infowindow = new kakao.maps.InfoWindow({
@@ -173,11 +173,12 @@ function displayLocker(){
         });
     
         markers.push(marker)
-
         kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map,marker,infowindow,overImage));
         kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(marker,infowindow, normalImage))
         kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow ,clickImage))
     }
+
+
 }
 
 function createMarkerImage(markerSize,imgSrc) {
@@ -259,6 +260,8 @@ function showList(){
         return a.distance - b.distance
     })
 
+    console.log(list)
+
     list.forEach(x=>{
         var marker = null;
         var el = document.createElement('li');
@@ -308,7 +311,7 @@ function showList(){
         }
 
         if(x.title){
-            var itemStr = `<div class="info"><span class="title">${x.title} ${x.line}</span>`;
+            var itemStr = `<div class="info"><span class="title">${x.title}</span>`;
             if(x.location){
                 itemStr += `<span>${x.location}</span>`
             }
