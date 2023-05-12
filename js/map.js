@@ -316,6 +316,7 @@ function showList(){
         }else{
             itemStr = null;
         }
+
         (function(){
             el.onmouseover = function(){
                 if(!selectedItem || selectedItem !== el){
@@ -363,11 +364,9 @@ function showList(){
                 selectedItem = el;
                 markers.forEach(p=>{
                     if(p.getPosition().getLat().toFixed(5) === x.latlng.getLat().toFixed(5) && p.getPosition().getLng().toFixed(5) === x.latlng.getLng().toFixed(5)){
-                        // console.log(x.latlng)
                         marker = p;
-                    };    
+                    };
                 });
-                // console.log(marker.getPosition())
                 if (!selectedMarker || selectedMarker !== marker) {
                     // 클릭된 마커 객체가 null이 아니면
                     // 클릭된 마커의 이미지를 기본 이미지로 변경하고
@@ -381,7 +380,6 @@ function showList(){
                 }
                 selectedInfowindow = infowindow;
                 selectedMarker = marker;  
-                // console.log(thisMarker.getPosition())
                 map.setCenter(x.latlng);
             }
         })()

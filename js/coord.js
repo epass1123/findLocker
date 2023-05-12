@@ -11,29 +11,17 @@ export async function getCoord(x){
             method: 'get',
             headers: 'Authorization : KakaoAK e639f9820bd9dfd6a0627ecb6b06f5f3'
         }).then((res)=>{
-            return res.data.documents[0]
+            return res.data.documents;
         })
         .then(station=>{
-            let a = {}
-            a.longitude = station.x;
-            a.latitude = station.y;
-            a.address = station.address_name;
-            // a.line = station.category_name;
-            a.stationName = station.place_name;
-            return a
+            return station;
         })
         .catch((err)=>{
             if(err instanceof TypeError){
-                let b = {}
-                b.longitude = 0;
-                b.latitude = 0;
-                b.address = ""
-                b.location = ""
-                // a.line = station.category_name;
-                b.stationName = ""
-                return b;
+                console.log(err)
             }
         })
-        return res
+        return res;
 }
+
 
