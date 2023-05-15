@@ -311,7 +311,12 @@ function showList(){
         }
 
         if(x.title){
-            var itemStr = `<div class="info"><span class="title">${x.title}</span>`;
+            if(x.line){
+                var itemStr = `<div class="info"><span class="title">${x.title} ${x.line}</span>`;
+            }
+            else{
+                var itemStr = `<div class="info"><span class="title">${x.title}</span>`;
+            }
             if(x.location){
                 itemStr += `<span>${x.location}</span>`
             }
