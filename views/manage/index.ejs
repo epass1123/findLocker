@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/manage.css">
+    <title>관리자 페이지</title>
+</head>
+<body>
+    <div id="body">
+        <ul id="menu">
+            <a class="navbar" href="/"><img src="/img/logo4.png" alt=""><h2>관리자페이지</h2></a>
+            <div>
+                <b><a href="/routes/manage">회원관리</a></b>
+                <li id="userInfo"><a href="/routes/manage/user">회원정보수정</a></li>
+                <li id="withdrawl"><a href="/routes/manage/user">회원탈퇴</a></li>
+            </div>
+            
+            <div>
+                <b>보관함관리</b>
+                <li id="myLocker"><a href="/routes/user/mylocker/myLocker">내가 등록한 보관함</a></li>
+                <li id="favorites"><a href="/routes/user/mylocker/favorites">즐겨찾기</a></li>
+            </div>
+        </ul>        
+        <div class="container">
+            <h2>회원 관리</h2>
+            <form>
+                <select name="userlist" >
+                    <option value="none">=== 선택 ===</option>
+                    <option value="manager">관리자</option>
+                    <option value="usual">일반</option>
+                  </select>
+                <div class="search">
+                        <div id="search-bar">
+                            <input id="search-input" type="search" placeholder="회원을 검색하세요." value="">
+                            <button id="btn1" type="submit"><img src="/img/001-search.png" alt="Search"></button>
+                        </div>
+                </div>
+            </form>
+            <ul id="mylocker">
+                <script>
+                    function selectAll(e){
+                        let checkbox = document.getElementsByName('user');
+                        checkbox.forEach((x) => {
+                            x.checked = e.checked;
+                        })
+                    }
+                </script>
+                <span><%= users.length %>명의 회원</span>
+                <form method="post" id="lockerlist">
+                <% if(!users.length){%>
+                    <div>
+                        <div>회원이 존재하지 않습니다.</div>
+                    </div>    
+                <% } %>
+                <table id="users">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="all" name="user"  onclick="selectAll(this)"></td>
+                            <th>회원 이름</th>
+                            <th>아이디</th>
+                            <th>이메일</th>
+                            <th>등급</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% for(let i = 0;i < users.length ;i++) {%>
+                            <label for="lockerChk<%=i%>">
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="user" id="lockerChk<%=i%>" value="<%= users[i].stationName %>">
+                                </td>
+                                    <td><a href=""><%= users[i].name %></a></td>
+                                    <td><%= users[i].id %></td>
+                                    <td><%= users[i].email %></td>
+                                    <td><%= users[i].authority %></td>
+                                </tr>                            
+                            </label>
+                            <% } %>
+                    </tbody>
+                </table>
+                </form>
+                <div id="control">
+                    <button type="submit" form="lockerlist">삭제</button>
+                    <button onclick="location.href='/routes/add'">추가하기</button>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

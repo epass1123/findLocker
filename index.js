@@ -3,8 +3,6 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import path from 'path'
-import Locker from './models/lockers.js'
-import User from './models/users.js';
 
 import expressSession from "express-session"
 import MemoryStore from "memorystore"
@@ -21,6 +19,7 @@ import modifyRouter from "./routes/user/myinfo/modify.js";
 import withdrawlRouter from "./routes/user/myinfo/withdrawl.js";
 import favRouter from "./routes/user/mylocker/favorites.js";
 import mylockerRouter from "./routes/user/mylocker/mylocker.js";
+import managerRouter from "./routes/manage/index.js"
 
 const app = express();
 const __dirname = path.resolve();
@@ -76,5 +75,6 @@ app.use("/routes/user/myinfo/modify", modifyRouter);
 app.use("/routes/user/myinfo/withdrawl", withdrawlRouter);
 app.use("/routes/user/mylocker/favorites", favRouter);
 app.use("/routes/user/mylocker/mylocker", mylockerRouter);
+app.use("/routes/manage", managerRouter);
 
 app.listen(process.env.PORT, ()=>console.log("서버 open"))

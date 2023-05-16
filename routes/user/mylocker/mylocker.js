@@ -11,8 +11,8 @@ router.get('/',
                 send(alertMove("/routes/login","로그인이 필요합니다."))
         }
         else{
-            let myname = req.session.user.name
-            let mylocker = await Locker.find({userName: myname});
+            let myid = req.session.user.id
+            let mylocker = await Locker.find({userName: myid});
             res.render(
                 "user/mylocker/mylocker",
                 {   

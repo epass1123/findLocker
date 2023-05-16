@@ -39,24 +39,9 @@ html, body{
     white-space: nowrap;
 }
 
-#menu li:hover a{
-    background-color: rgb(93, 164, 235);
-    border-radius: 3px;
-}
-
 #welcome{
     display: inline-block;
     position: relative;
-}
-
-#welcome:not(#menu):hover a{
-    background-color: transparent;
-    border: none;
-}
-
-#welcome:hover > #userMenu{
-    display: block;
-    background-color: transparent;
 }
 
 #userMenu{
@@ -350,6 +335,23 @@ li a {
 
 .favorite:checked{
     background: url(../img/yellowstar.png) 0% 0% / contain no-repeat;
+}
+
+@media (hover:hover){
+    #menu li:hover a{
+        background-color: rgb(93, 164, 235);
+        border-radius: 3px;
+    }
+    
+    #welcome:not(#menu):hover a{
+        background-color: transparent;
+        border: none;
+    }
+    
+    #welcome:hover > #userMenu{
+        display: block;
+        background-color: transparent;
+    }
 }
 
 @media (min-width: 576px) {
