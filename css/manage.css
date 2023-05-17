@@ -233,11 +233,21 @@ td{
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     padding: 10px 0 0 0;
+    cursor: pointer;
+}
+
+#userInfo > ul:first-child > li:hover{
+    background-color: rgba(100, 132, 138, 0.663);
 }
 
 #info{
     text-align: left;
-    padding: 20px 0 0 50px;
+    padding: 30px 0 0 50px;
+}
+
+#info > li{
+    margin:  5px 0 0 4px;
+    font-size: 20px;
 }
 
 .search{
