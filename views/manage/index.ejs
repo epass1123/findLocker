@@ -19,7 +19,7 @@
             
             <div>
                 <b>보관함관리</b>
-                <li id="myLocker"><a href="/routes/user/mylocker/myLocker">내가 등록한 보관함</a></li>
+                <li id="myLocker"><a href="/routes/user/mylocker/myLocker">보관함</a></li>
             </div>
         </ul>        
         <div class="container">
@@ -38,6 +38,7 @@
                 </div>
             </form>
             <ul id="userlist">
+
                 <script>
                     function selectAll(e){
                         let checkbox = document.getElementsByName('user');
@@ -75,7 +76,6 @@
                                     <td><label for="userChk<%=i%>"><%= users[i].email %></label></td>
                                     <td><label for="userChk<%=i%>"><%= users[i].authority %></label></td>
                                 </tr>                            
-                            
                     <% } %>
                     </tbody>
                 </table>
@@ -86,51 +86,26 @@
                 </div>
             </ul>
         </div>
+        <script type="text/javascript" src="/js/manage.js"></script>
+
         <script>
             var userlist =  "<%=JSON.stringify(users)%>";
                 userlist = userlist.replaceAll('&#34;','\"');
                 userlist = JSON.parse(userlist);
 
-            function userClick(e){
-                let username, useremail, userfavorites, userauthority;
-
-                userlist.forEach(x=>{
-                    if(x.id === e.text){
-                        username = x.name;
-                        useremail = x.email;
-                        userfavorites = x.favorites.join(',');
-                        console.log(userfavorites)
-                        userauthority = x.authority;
-                    }
-                })
-                let info = document.getElementById("info");
-                let id = document.getElementById("id");
-                let name = document.getElementById("name");
-                let email = document.getElementById("email");
-                let authority = document.getElementById("authority");
-                let favorites = document.getElementById("favorites");
-                
-                id.innerHTML = `<b>아이디: </b>${e.text}`
-                name.innerHTML = `<b>이름: </b>${username}`
-                email.innerHTML = `<b>이메일: </b>${useremail}`
-                authority.innerHTML = `<b>권한: </b>${userauthority}`
-                favorites.innerHTML = `<b>즐겨찾기: </b>${userfavorites}`
-                
-            }
+            var lockerlist =  "<%=JSON.stringify(lockers)%>";
+            lockerlist = lockerlist.replaceAll('&#34;','\"');
+            lockerlist = JSON.parse(lockerlist);
         </script>
         <div id="popup">
             <div id="userInfo">
                 <ul>
-                    <li>회원 정보</li>
-                    <li>등록한 보관함</li>
+                    <li onclick="showUser()">회원 정보</li>
+                    <li onclick="showLocker()">보관함</li>
                 </ul>
                 <ul id="info">
-                    <li id="id"></li>
-                    <li id="name"></li>
-                    <li id="email"></li>
-                    <li id="authority"></li>
-                    <li id="favorites"></li>
                 </ul>
+                <button onclick="closePop()">닫기</button>
             </div>
         </div>
     </div>

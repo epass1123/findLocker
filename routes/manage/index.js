@@ -14,11 +14,13 @@ router.get('/',
         else{
             if(req.session.user.authority === '관리자'){
                 let users = await User.find({});
+                let lockers = await Locker.find({});
                 res.render(
                     "manage/index",
                     {
                         user: req.session.user,
-                        users
+                        users,
+                        lockers
                     }
                 )    
             }

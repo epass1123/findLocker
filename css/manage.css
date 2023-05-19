@@ -109,7 +109,7 @@ li a {
 .container > form {
     display: flex;
     background-color: rgba(100, 132, 138, 0.343);
-    padding: 20px;
+    padding: 20px 35px;
 }
 
 .container > form > select{
@@ -230,8 +230,6 @@ td{
     border: 0.1px solid;
     background-color: rgba(100, 132, 138, 0.343);
     height: 25px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
     padding: 10px 0 0 0;
     cursor: pointer;
 }
@@ -240,14 +238,31 @@ td{
     background-color: rgba(100, 132, 138, 0.663);
 }
 
-#info{
-    text-align: left;
-    padding: 30px 0 0 50px;
+#userInfo > button{
+    margin: 50px auto;
+    background:rgba(13, 97, 31, 0.7);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 30px;
+    color:white;
+    width: 300px
 }
 
-#info > li{
-    margin:  5px 0 0 4px;
-    font-size: 20px;
+#info{
+    text-align: left;
+    padding: 30px 50px;
+    overflow: scroll;
+}
+
+#info > .item{
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+#info > .item > span{
+    display: block;
+    margin: 4px 0 0 10px;
 }
 
 .search{
