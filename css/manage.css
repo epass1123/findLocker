@@ -173,6 +173,7 @@ td{
     height: auto;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
 }
 
 .container > #userlist > #control{
@@ -193,6 +194,7 @@ td{
     height: 30px;
     color:white
 }
+
 
 #popup{
     display: none;

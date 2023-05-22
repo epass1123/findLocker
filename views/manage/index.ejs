@@ -25,15 +25,15 @@
         <div class="container">
             <h2>회원 관리</h2>
             <form>
-                <select name="authority" >
+                <select name="authority" onchange="selectAuth()" >
                     <option value="none">=== 선택 ===</option>
                     <option value="manager">관리자</option>
                     <option value="usual">일반</option>
                   </select>
                 <div class="search">
                         <div id="search-bar">
-                            <input id="search-input" type="search" placeholder="회원을 검색하세요." value="">
-                            <button id="btn1" type="submit"><img src="/img/001-search.png" alt="Search"></button>
+                            <input id="search-input" type="search" placeholder="회원을 검색하세요." value="" onkeyup="filter()">
+                            <button id="btn1" onclick="filter()"><img src="/img/001-search.png" alt="Search"></button>
                         </div>
                 </div>
             </form>
@@ -64,15 +64,14 @@
                             <th>등급</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                     <% for(let i = 0;i < users.length ;i++) {%>
-                            
-                            <tr>
+                            <tr class="userItem">
                                 <td>
                                     <input type="checkbox" name="user" id="userChk<%=i%>" value="<%= users[i].stationName %>">
                                 </td>
-                                    <td><label for="userChk<%=i%>"><a onclick="userClick(this)"><%= users[i].id %></a></label></td>
-                                    <td><label for="userChk<%=i%>"><%= users[i].name %></label></td>
+                                    <td id="userId"><label for="userChk<%=i%>"><a onclick="userClick(this)"><%= users[i].id %></a></label></td>
+                                    <td id="userName"><label for="userChk<%=i%>"><%= users[i].name %></label></td>
                                     <td><label for="userChk<%=i%>"><%= users[i].email %></label></td>
                                     <td><label for="userChk<%=i%>"><%= users[i].authority %></label></td>
                                 </tr>                            
@@ -96,6 +95,7 @@
             var lockerlist =  "<%=JSON.stringify(lockers)%>";
             lockerlist = lockerlist.replaceAll('&#34;','\"');
             lockerlist = JSON.parse(lockerlist);
+
         </script>
         <div id="popup">
             <div id="userInfo">
