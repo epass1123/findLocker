@@ -57,7 +57,7 @@
                 <table id="users">
                     <thead>
                         <tr>
-                            <th><input type="checkbox" id="all" name="user"  onclick="selectAll(this)"></td>
+                            <th><input type="checkbox" id="all" name="all"  onclick="selectAll(this)"></td>
                             <th>아이디</th>
                             <th>회원 이름</th>
                             <th>이메일</th>
@@ -68,7 +68,7 @@
                     <% for(let i = 0;i < users.length ;i++) {%>
                             <tr class="userItem">
                                 <td>
-                                    <input type="checkbox" name="user" id="userChk<%=i%>" value="<%= users[i].stationName %>">
+                                    <input type="checkbox" name="user" id="userChk<%=i%>" value="<%= users[i].id %>">
                                 </td>
                                     <td id="userId"><label for="userChk<%=i%>"><a onclick="userClick(this)"><%= users[i].id %></a></label></td>
                                     <td id="userName"><label for="userChk<%=i%>"><%= users[i].name %></label></td>
@@ -81,7 +81,6 @@
                 </form>
                 <div id="control">
                     <button type="submit" form="lockerlist">삭제</button>
-                    <button onclick="location.href='/routes/add'">추가하기</button>
                 </div>
             </ul>
         </div>

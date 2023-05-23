@@ -173,7 +173,7 @@ td{
     height: auto;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .container > #userlist > #control{
@@ -190,6 +190,7 @@ td{
     background:rgba(13, 97, 31, 0.7);
     border: none;
     border-radius: 5px;
+    width: 70px;
     cursor: pointer;
     height: 30px;
     color:white
@@ -254,12 +255,12 @@ td{
 #info{
     text-align: left;
     padding: 30px 50px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 #info > .item{
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
+    padding: 5px 0 5px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 #info > .item > span{

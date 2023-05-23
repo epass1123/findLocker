@@ -88,7 +88,8 @@ function filter() {
         userName = userItem.item(i).childNodes[5].childNodes;
         auth = userItem.item(i).childNodes[9].childNodes;
         if(value){
-            if(value === "=== 선택 ===" && ()){
+            if(value === "=== 선택 ==="
+            ){
                 if (userID[0].innerHTML.toLowerCase().includes(search) ||
                 userName[0].innerHTML.toLowerCase().includes(search))
                 {

@@ -2,7 +2,6 @@ import express from "express";
 import alertMove from "../../js/util/alertMove.js";
 import User from '../../models/users.js';
 import Locker from '../../models/lockers.js';
-import bcrypt from 'bcrypt'
 const router = express.Router();
 
 router.get('/',
@@ -29,31 +28,26 @@ router.get('/',
 )
 
 router.post('/',
-    async (req,res)=>{
-        const { password } = req.body;
-        try{
-            if(req.session.user){
-                let id = req.session.user.id
-                let user = await User.findOne({ id });
-                const check = await bcrypt.compare(password, user.password);
-              if(check){
-                return res.redirect("../user/myinfo/modify")
-              }
-              else{
-                return res.
-                send(alertMove("../user/index", "비밀번호가 다릅니다."))
-              }
+async (req,res)=>{ 
+    if(req.session.user.authority === '관리자'){
+        let { user } = req.body;
+        console.log(user)
+        if(user){
+            if(typeof user === "string"){
+                await User.findByIdAndDelete(user);
             }
             else{
-                return res.
-                send(alertMove("/routes/login","로그인이 필요합니다."))
+                for(let i = 0; i<user.length;i++){
+                    await User.findByIdAndDelete(user[i]);
+                }
             }
-        }
-        catch(e){
-            console.log(e)
-        }
+                return res.
+                    send(alertMove("./manage","회원삭제가 완료되었습니다."))            
 
+        }
     }
+}
 )
+
 
 export default router;
