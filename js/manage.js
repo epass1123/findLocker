@@ -12,8 +12,10 @@ function showLocker(){
     let info = document.getElementById("info");
     let fragment = document.createDocumentFragment();
     info.innerHTML = ""
+
     lockerlist.forEach(x=>{
         if(userId===x.userName){
+            cnt++
             let li = document.createElement("li");
             let itemStr = `
             <span><b>보관함명: </b> ${x.stationName}</span>
@@ -25,8 +27,9 @@ function showLocker(){
             li.innerHTML = itemStr;
             fragment.appendChild(li);
         }
-    })
-    info.appendChild(fragment)
+    });
+    
+    info.appendChild(fragment);
 }
 
 function showUser(){
