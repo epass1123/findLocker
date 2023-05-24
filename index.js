@@ -9,14 +9,7 @@ import MemoryStore from "memorystore"
 const memorystore = MemoryStore(expressSession);
 
 import indexRouter from "./routes/index.js"
-import lockerRouter from "./routes/locker.js"
-import registerRouter from "./routes/register.js"
-import loginRouter from "./routes/login.js"
-import addRouter from "./routes/add.js";
-import logoutRouter from "./routes/logout.js";
 import mypageRouter from "./routes/user/index.js";
-import modifyRouter from "./routes/user/myinfo/modify.js";
-import withdrawlRouter from "./routes/user/myinfo/withdrawl.js";
 import favRouter from "./routes/user/mylocker/favorites.js";
 import mylockerRouter from "./routes/user/mylocker/mylocker.js";
 import managerRouter from "./routes/manage/index.js"
@@ -65,14 +58,7 @@ mongoose.connect(
 
 //미들웨어
 app.use("/", indexRouter);
-app.use("/routes/locker", lockerRouter);
-app.use("/routes/register", registerRouter);
-app.use("/routes/login", loginRouter);
-app.use("/routes/add", addRouter);
-app.use("/routes/logout", logoutRouter);
-app.use("/routes/user/index", mypageRouter);
-app.use("/routes/user/myinfo/modify", modifyRouter);
-app.use("/routes/user/myinfo/withdrawl", withdrawlRouter);
+app.use("/routes/user", mypageRouter);
 app.use("/routes/user/mylocker/favorites", favRouter);
 app.use("/routes/user/mylocker/mylocker", mylockerRouter);
 app.use("/routes/manage", managerRouter);

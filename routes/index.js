@@ -1,50 +1,22 @@
 import express from "express";
-import alertMove from "/Users/kim/Desktop/web/memosite/js/util/alertMove.js";
-import Locker from '../models/lockers.js'
-import User from '../models/users.js';
 const router = express.Router();
+import * as controller from "./main.controller.js"
 
-router.get('/',async function(req,res){
-    let list = await Locker.find({});
-    if(req.session.user){
-        res.render('index',{
-            user: req.session.user,
-            appkey: process.env.APPKEY,
-            list: list,
-        })
-    }
-    else{
-        res.render('index',{
-            user: null,
-            appkey: process.env.APPKEY,
-            list: list
-    })
-}
-});
+router.get('/',controller.indexGet);
+router.post('/',controller.indexPost);
 
-router.post('/',async (req,res)=>{
-    if(req.session.user){
-        let favorites = await User.findOne({id:req.session.user.id}, 'favorites');
-        favorites = favorites.favorites;
-        const {checkbox, inpValue} = req.body
-        if(!checkbox){
-            if(favorites.includes(inpValue)){
-                favorites.splice(favorites.indexOf(inpValue), 1);
-                req.session.user.favorites = favorites
-            }
-            await User.findOneAndUpdate({id:req.session.user.id},{favorites:favorites});
-            
-        }
-        else{
-            if(!favorites.includes(inpValue)){
-                favorites.push(inpValue)
-                req.session.user.favorites = favorites
-                await User.findOneAndUpdate({id:req.session.user.id},{favorites:favorites});
-            }
-        }
-    }
-    
-})
+router.get('/routes/add',controller.addGet);
+router.post('/routes/add',controller.addPost);
 
+router.get('/routes/locker',controller.lockerGet);
+router.post('/routes/locker',controller.lockerPost);
+
+router.get('/routes/login',controller.loginGet);
+router.post('/routes/login',controller.loginPost);
+
+router.get('/routes/logout',controller.logoutGet);
+
+router.get('/routes/register',controller.registerGet);
+router.post('/routes/register',controller.registerPost);
 
 export default router;

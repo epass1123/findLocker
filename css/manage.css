@@ -6,6 +6,11 @@ html, body{
     flex-direction: column;
 }
 
+li >img{
+    width: 30px;
+    height: 30px;
+}
+
 a{
     text-decoration: none;
     cursor: pointer;
@@ -47,13 +52,12 @@ li a {
 
 #menu > div{
     text-align: center;
-    padding: 0 15px;
     color: rgba(216, 216, 216, 1);
 }
 
 #menu > div > li:last-child{
     border-bottom: 1px solid rgba(152, 152, 152, 0.3);
-    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 #menu > div:nth-child(3){
