@@ -10,8 +10,6 @@ const memorystore = MemoryStore(expressSession);
 
 import indexRouter from "./routes/index.js"
 import mypageRouter from "./routes/user/index.js";
-import favRouter from "./routes/user/mylocker/favorites.js";
-import mylockerRouter from "./routes/user/mylocker/mylocker.js";
 import managerRouter from "./routes/manage/index.js"
 
 const app = express();
@@ -59,8 +57,6 @@ mongoose.connect(
 //미들웨어
 app.use("/", indexRouter);
 app.use("/routes/user", mypageRouter);
-app.use("/routes/user/mylocker/favorites", favRouter);
-app.use("/routes/user/mylocker/mylocker", mylockerRouter);
 app.use("/routes/manage", managerRouter);
 
 app.listen(process.env.PORT, ()=>console.log("서버 open"))
