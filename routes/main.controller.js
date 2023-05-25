@@ -214,8 +214,9 @@ let loginPost = async (req, res) => {
           if(check){
             // const token = jwt.sign({userId: user._id}, 'secretToken');
             req.session.user = user
-            console.log(req.session.user)
-            return res.redirect(req.session.prevPage)
+            console.log(req.session.user);
+            if(req.session.prevPage === "http://localhost:3000/routes/login") return res.redirect("/")
+            return res.redirect(req.session.prevPage);
             
           }else{
             return res

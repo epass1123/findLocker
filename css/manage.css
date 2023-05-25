@@ -112,7 +112,7 @@ li a {
 
 .container > form {
     display: flex;
-    background-color: rgba(100, 132, 138, 0.343);
+    background-color: rgb(157, 167, 169);
     padding: 20px 35px;
 }
 
@@ -143,10 +143,15 @@ table{
     border-collapse: collapse;
 }
 
+#users > thead{
+    position: sticky;
+    top: 0;
+}
+
 #users > thead > tr:first-child{
     height: 50px;
     text-align: left;
-    background-color: rgba(100, 132, 138, 0.343);
+    background-color: rgb(157, 167, 169);
 }
 
 #users > thead > tr > th:nth-child(1){
@@ -162,25 +167,25 @@ tr {
 }
 
 td{
-    padding: 10px 0;
+    padding: 10px 5px;
 }
 
-.container > #userlist{
+#userlist{
     display: flex;
     flex-direction: column;
-    width:90%;
+    width: 100%;
     margin: 30px auto;
+    height: 110%;
 }
 
-.container > #userlist > form{
-    padding: 10px 0px;
+#userlist > form{
     height: auto;
     display: flex;
     flex-direction: column;
     overflow: auto;
 }
 
-.container > #userlist > #control{
+#userlist > #control{
     padding: 10px 10px;
     float: right;
     height: auto;
@@ -189,7 +194,7 @@ td{
     margin-left: auto;
 }
 
-.container > #userlist > #control > button{
+#userlist > #control > button{
     margin: 0 2px;
     background:rgba(13, 97, 31, 0.7);
     border: none;
@@ -200,6 +205,9 @@ td{
     color:white
 }
 
+#userlist > span{
+    margin-bottom: 5px;
+}
 
 #popup{
     display: none;
@@ -241,6 +249,11 @@ td{
     cursor: pointer;
 }
 
+#userInfo > ul:first-child > h2{
+    margin: 0px auto;
+    padding-top: 30px;
+}
+
 #userInfo > ul:first-child > li:hover{
     background-color: rgba(100, 132, 138, 0.663);
 }
@@ -265,6 +278,11 @@ td{
 #info > .item{
     padding: 5px 0 5px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+#info > .item:last-child{
+    padding: 5px 0 5px 0;
+    border-bottom: none;
 }
 
 #info > .item > span{

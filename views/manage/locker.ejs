@@ -11,24 +11,24 @@
     <div id="body">
        <%- include("./menu.ejs")%>      
         <div class="container">
-            <h2>회원 관리</h2>
+            <h2>보관함 관리</h2>
             <form>
                 <select name="authority" onchange="selectAuth()" >
                     <option value="none">=== 선택 ===</option>
-                    <option value="manager">관리자</option>
-                    <option value="usual">일반</option>
+                    <option value="owner">작성자</option>
+                    <option value="name">보관함 이름</option>
                   </select>
                 <div class="search">
                         <div id="search-bar">
-                            <input id="search-input" type="search" placeholder="회원을 검색하세요." value="" onkeyup="filter()">
+                            <input id="search-input" type="search" placeholder="보관함을 검색하세요." value="" onkeyup="filter()">
                             <button id="btn1" onclick="filter()"><img src="/img/001-search.png" alt="Search"></button>
                         </div>
                 </div>
             </form>
             <ul id="userlist">
-                <span><%= users.length %>명의 회원</span>
+                <span><%= lockers.length %>개의 보관함</span>
                 <form method="post" id="lockerlist">
-                <% if(!users.length){%>
+                <% if(!lockers.length){%>
                     <div>
                         <div>회원이 존재하지 않습니다.</div>
                     </div>    
@@ -37,22 +37,20 @@
                     <thead>
                         <tr>
                             <th><input type="checkbox" id="all" name="all"  onclick="selectAll(this)"></td>
-                            <th>아이디</th>
-                            <th>회원 이름</th>
-                            <th>이메일</th>
-                            <th>등급</th>
+                            <th>보관함 이름</th>
+                            <th>작성자</th>
+                            <th>주소</th>
                         </tr>
                     </thead>
                     <tbody >
-                    <% for(let i = 0;i < users.length ;i++) {%>
+                    <% for(let i = 0;i < lockers.length ;i++) {%>
                             <tr class="userItem">
                                 <td>
-                                    <input type="checkbox" name="checked" id="userChk<%=i%>" value="<%= users[i].id %>">
+                                    <input type="checkbox" name="checked" id="userChk<%=i%>" value="<%= lockers[i].id %>">
                                 </td>
-                                    <td id="userId"><label for="userChk<%=i%>"><a onclick="userClick(this)"><%= users[i].id %></a></label></td>
-                                    <td id="userName"><label for="userChk<%=i%>"><%= users[i].name %></label></td>
-                                    <td><label for="userChk<%=i%>"><%= users[i].email %></label></td>
-                                    <td><label for="userChk<%=i%>"><%= users[i].authority %></label></td>
+                                    <td id="lockerName"><label for="userChk<%=i%>"><a onclick="lockerInfo(this)" data-value="<%= lockers[i].id %>"><%= lockers[i].stationName %></a></label></td>
+                                    <td id="userName"><label for="userChk<%=i%>"><%= lockers[i].userName %></label></td>
+                                    <td><label for="userChk<%=i%>"><%= lockers[i].address %></label></td>
                                 </tr>                            
                     <% } %>
                     </tbody>
@@ -78,8 +76,7 @@
         <div id="popup">
             <div id="userInfo">
                 <ul>
-                    <li onclick="showUser()">회원 정보</li>
-                    <li onclick="showLocker()">보관함</li>
+                    <h2>보관함 정보</h2>
                 </ul>
                 <ul id="info">
                 </ul>

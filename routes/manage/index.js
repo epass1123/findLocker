@@ -6,6 +6,7 @@ router.get('/',controller.indexGet);
 router.post('/',controller.indexPost);
 
 router.get('/locker',controller.lockerGet);
+router.post('/locker',controller.lockerPost);
 
 
 export default router;
