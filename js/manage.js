@@ -51,7 +51,7 @@ function userClick(e){
 function filter() {
     let search = document.getElementById("search-input").value.toLowerCase();
     let userItem = document.getElementsByClassName("userItem");
-    let select = document.getElementsByName("authority");
+    let select = document.getElementsByName("select");
     let value = select[0].options[select[0].selectedIndex].text;
     for (let i = 0; i < userItem.length; i++) {
         userID = userItem.item(i).childNodes[3].childNodes;
@@ -133,7 +133,7 @@ function showUser(){
 }
 
 function selectAuth(){
-    let select = document.getElementsByName("authority");
+    let select = document.getElementsByName("select");
     let value = select[0].options[select[0].selectedIndex].text;
     let userItem = document.getElementsByClassName("userItem");
     for (let i = 0; i < userItem.length; i++) {
@@ -181,4 +181,45 @@ function lockerInfo(e){
 
     popup.style.display = "block"
     
+}
+
+function filter2() {
+    let search = document.getElementById("search-input").value.toLowerCase();
+    let userItem = document.getElementsByClassName("userItem");
+    let select = document.getElementsByName("select");
+    let value = select[0].options[select[0].selectedIndex].text;
+
+    for (let i = 0; i < userItem.length; i++) {
+        lockerName = userItem.item(i).childNodes[3].childNodes;
+        userName = userItem.item(i).childNodes[5].childNodes;
+        if(value){
+            if(value === "=== 선택 ==="){
+                if (lockerName[0].innerHTML.toLowerCase().includes(search) ||
+                userName[0].innerHTML.toLowerCase().includes(search))
+                {
+                    userItem.item(i).style.display = "table-row"
+                } else {
+                    userItem.item(i).style.display = "none"
+                }
+            }
+            else if(value === "작성자"){
+                if (userName[0].innerHTML.toLowerCase().includes(search))
+                {
+                    userItem.item(i).style.display = "table-row"
+                } else {
+                    userItem.item(i).style.display = "none"
+                }
+            }
+            else if(value==="보관함 이름"){
+                if (lockerName[0].innerHTML.toLowerCase().includes(search))
+                {
+                    userItem.item(i).style.display = "table-row"
+                } else {
+                    userItem.item(i).style.display = "none"
+                }
+            }
+            
+        }
+        
+    }
 }
