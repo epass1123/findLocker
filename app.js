@@ -60,3 +60,5 @@ app.use("/routes/user", mypageRouter);
 app.use("/routes/manage", managerRouter);
 
 app.listen(process.env.PORT, ()=>console.log("서버 open"))
+
+export default app;
