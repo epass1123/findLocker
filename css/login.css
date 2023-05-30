@@ -3,6 +3,19 @@ body{
     background-color: azure;
 }
 
+a{
+    text-decoration: none;
+}
+
+.navbar{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.navbar > img{
+    width: 130px;
+}
 .container {
     margin: 100px auto;
     width: 80%;
@@ -37,6 +50,7 @@ body{
     border-radius: 10px;
     border: none;
     background-color:rgba(154, 210, 232, 0.8);
+    cursor: pointer;
 }
 
 
@@ -47,3 +61,4 @@ body{
         padding: 10px 0px;
     }
 }
+

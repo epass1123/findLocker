@@ -233,7 +233,8 @@ function makeClickListener(map, marker, infowindow, clickImage){
 }
 
 if(!_user){
-    localStorage.clear();
+    localStorage.removeItem("fav");
+    localStorage.removeItem("ID");
 }
 
 function showList(){

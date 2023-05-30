@@ -3,6 +3,16 @@ body{
     background-color: azure;
 }
 
+.navbar{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.navbar > img{
+    width: 130px;
+}
+
 .register{
     width: 80%;
     margin: 100px auto;
