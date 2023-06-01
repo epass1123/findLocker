@@ -8,9 +8,9 @@ import expressSession from "express-session"
 import MemoryStore from "memorystore"
 const memorystore = MemoryStore(expressSession);
 
-import indexRouter from "../routes/index.js"
-import mypageRouter from "../routes/user/index.js";
-import managerRouter from "../routes/manage/index.js"
+import indexRouter from "./routes/index.js"
+import mypageRouter from "./routes/user/index.js";
+import managerRouter from "./routes/manage/index.js"
 
 const app = express();
 const __dirname = path.resolve();
