@@ -1,4 +1,4 @@
-import alertMove from "/Users/kim/Desktop/web/memosite/js/util/alertMove.js";
+import alertMove from "../../js/util/alertMove";
 import User from '../../models/users.js';
 import Locker from '../../models/lockers.js';
 import bcrypt from 'bcrypt';
