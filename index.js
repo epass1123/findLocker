@@ -20,8 +20,8 @@ app.set('views','./views');
 app.set("view engine","ejs");
 app.engine('html', ejs.renderFile);
 
-// app.use(express.static(__dirname));
-app.use(express.static('public'));
+app.use(express.static(__dirname));
+// app.use(express.static('public'));
 app.use(express.json({ extended: false }));
 //__dirname 하위의 폴더들을 사용
 
