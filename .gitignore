@@ -5,7 +5,7 @@
 ## node modules ##
 node_modules
 package-lock.json
-package.json
+# package.json
 
 ## 내부데이터
 *.csv
