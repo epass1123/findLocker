@@ -1,5 +1,5 @@
 import fs from 'fs'
-const csvFIle = fs.readFileSync('/Users/kim/Desktop/web/memosite/cap_train.csv')
+const csvFIle = fs.readFileSync('./cap_train.csv')
 const stringCsv = csvFIle.toString();
 
 let id = 1;
