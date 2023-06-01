@@ -1,4 +1,4 @@
-import alertMove from "../../js/util/alertMove";
+import alertMove from "../../js/util/alertMove.js";
 import User from '../../models/users.js';
 import Locker from '../../models/lockers.js';
 import bcrypt from 'bcrypt';
