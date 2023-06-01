@@ -8,6 +8,6 @@ node_modules
 # package.json
 
 ## 내부데이터
-*.csv
+# *.csv
 
 .DS_Store
