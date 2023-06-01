@@ -41,19 +41,19 @@ app.use(expressSession({
     saveUninitialized: true,
 }));
 
-import mongoose from 'mongoose';
-mongoose.set('strictQuery', true)
-mongoose.connect(
-    `mongodb+srv://Kim:${process.env.DB_PASSWORD}@cluster0.zwmf9jb.mongodb.net/?w=majority`,{
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        // useCreateIndex: true,
-        // useFindAndModify: false,
-    }, 6000000)
-    .then(() => console.log('MongoDB conected'))
-    .catch((err) => {
-        console.log(err);
-});
+// import mongoose from 'mongoose';
+// mongoose.set('strictQuery', true)
+// mongoose.connect(
+//     `mongodb+srv://Kim:${process.env.DB_PASSWORD}@cluster0.zwmf9jb.mongodb.net/?w=majority`,{
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true,
+//         // useCreateIndex: true,
+//         // useFindAndModify: false,
+//     }, 6000000)
+//     .then(() => console.log('MongoDB conected'))
+//     .catch((err) => {
+//         console.log(err);
+// });
 
 //미들웨어
 app.use("/", indexRouter);
