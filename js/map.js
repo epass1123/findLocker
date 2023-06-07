@@ -113,9 +113,6 @@ function currentLocation() {
 	
 }
 
-let currentLoc = document.getElementById('currentPos')
-currentLoc.onclick = currentLocation;
-
 function displayMarker(locPosition, message) {
 	var imageSize = new kakao.maps.Size(24, 35);
     var imageSrc = '../img/focus.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
