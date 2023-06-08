@@ -28,15 +28,12 @@ let fav = _fav
 
 if(_user){
     if(localStorage.getItem("fav") !== null){
-        console.log("로컬스토리지 존재함: ", localStorage.getItem("fav"));
         fav = JSON.parse(localStorage.getItem("fav"));
-        console.log("fav: ", fav);
         localStorage.setItem("fav", JSON.stringify(fav));
     }
     else{
-        console.log("초기 fav:",fav)
         localStorage.setItem("fav", JSON.stringify(fav));
-        localStorage.setItem("ID", JSON.stringify(_user.id))
+        localStorage.setItem("ID", JSON.stringify(_user.id));
     }
 }
 
@@ -258,8 +255,6 @@ function showList(){
         return a.distance - b.distance
     })
 
-    console.log(list)
-
     list.forEach(x=>{
         var marker = null;
         var el = document.createElement('li');
@@ -294,12 +289,10 @@ function showList(){
 
         input.onchange = function(e){
             if(fav){
-                console.log(input.checked)
                 if(input.checked && !fav.includes(inputValue.value)){
                     fav.push(inputValue.value)
                 }
                 else if(!input.checked && fav.includes(inputValue.value)){
-                    console.log("fav:",fav)
                     fav.splice(fav.indexOf(inputValue.value),1);
                 }
             }
@@ -332,8 +325,6 @@ function showList(){
                 if(_user){
                 let storage = localStorage.getItem("fav")
                     if(storage){
-                        console.log(storage)
-                        console.log(inputValue.value)
                        if(storage.includes(inputValue.value)){
                             input.checked = true;
                        }
